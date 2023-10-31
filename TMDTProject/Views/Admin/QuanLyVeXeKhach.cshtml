@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TMDTProject.Models.VeXeKhach>
+@{
+    Layout = "~/Views/SharedAdmin/AdminSharedLayout.cshtml";
+}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Danh sách dịch vụ của đối tác</h1>
+    @*<a href="/Admin/ThemDoiTac" class="btn btn-success btn-circle">
+            <i class="fas fa-plus"></i>
+        </a>*@
+    @*<a href="#" class="btn btn-danger btn-circle">
+            <i class="fas fa-trash"></i>
+        </a>*@
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh Sách Dịch Vụ Của Đối Tác</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="table_doitac" class="table table-striped dataTable">
+                    <colgroup>
+                        <col style="width: 6%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên đối tác</th>
+                            <th>Loại Dịch Vụ</th>
+                            <th>Điểm Lên Xe</th>
+                            <th>Điểm Đến</th>
+                            <th>Giờ Xuất Phát</th>
+                            <th>Giá</th>
+                            <th>Chi Tiết</th>
+                            <th>Tuỳ Chỉnh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int stt = 0;
+                            foreach (TMDTProject.Models.VeXeKhach ve in Model)
+                            {
+                                stt++;
+                                <tr>
+                                    <td>@stt</td>
+                                    <td>@ve.DoiTac.TenDT</td>
+                                    <td>@ve.DoiTac.LoaiDichVu.TenLoaiDV</td>
+                                    <td>@ve.DiemLenXe</td>
+                                    <td>@ve.Gia</td>
+                                    <td>@ve.ChiTiet</td>
+                                    <td><a href="/Admin/SuaDoiTac/@ve.MaVeXe">Sửa</a>&nbsp;|&nbsp;<a href="/Admin/XoaDoiTac/@ve.MaVeXe" )">Xóa</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

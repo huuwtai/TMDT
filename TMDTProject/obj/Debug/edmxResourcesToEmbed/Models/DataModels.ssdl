@@ -1,0 +1,699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admins">
+    <Key>
+      <PropertyRef Name="id_admin" />
+    </Key>
+    <Property Name="id_admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="avatar" Type="varchar" MaxLength="255" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="birthday" Type="date" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="45" />
+    <Property Name="id_permission" Type="int" Nullable="false" />
+    <Property Name="last_login" Type="datetime" />
+    <Property Name="last_seen" Type="nvarchar" MaxLength="100" />
+    <Property Name="last_seen_url" Type="varchar" MaxLength="100" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="classes">
+    <Key>
+      <PropertyRef Name="id_class" />
+    </Key>
+    <Property Name="id_class" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="class_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_grade" Type="int" Nullable="false" />
+    <Property Name="id_speciality" Type="int" Nullable="false" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="grades">
+    <Key>
+      <PropertyRef Name="id_grade" />
+    </Key>
+    <Property Name="id_grade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="grade_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'master.dbo.HoaDon' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="HoaDon">
+          <Property Name="MaHD" Type="varchar" MaxLength="10" />
+          <Property Name="Ngay" Type="date" />
+          <Property Name="MaKH" Type="varchar" MaxLength="10" />
+          <Property Name="MaNV" Type="varchar" MaxLength="10" />
+          <Property Name="TongTien" Type="int" />
+          <Property Name="TrangThai" Type="varchar" MaxLength="10" />
+        </EntityType>-->
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="HoTen" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MSreplication_options">
+    <Key>
+      <PropertyRef Name="optname" />
+      <PropertyRef Name="value" />
+      <PropertyRef Name="major_version" />
+      <PropertyRef Name="minor_version" />
+      <PropertyRef Name="revision" />
+      <PropertyRef Name="install_failures" />
+    </Key>
+    <Property Name="optname" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="value" Type="bit" Nullable="false" />
+    <Property Name="major_version" Type="int" Nullable="false" />
+    <Property Name="minor_version" Type="int" Nullable="false" />
+    <Property Name="revision" Type="int" Nullable="false" />
+    <Property Name="install_failures" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="HoTenNV" Type="varchar" MaxLength="255" />
+    <Property Name="HeSoTT" Type="int" />
+  </EntityType>
+  <EntityType Name="permissions">
+    <Key>
+      <PropertyRef Name="id_permission" />
+    </Key>
+    <Property Name="id_permission" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="permission_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="questions">
+    <Key>
+      <PropertyRef Name="id_question" />
+    </Key>
+    <Property Name="id_question" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_subject" Type="int" Nullable="false" />
+    <Property Name="unit" Type="int" Nullable="false" />
+    <Property Name="img_content" Type="varchar" MaxLength="255" />
+    <Property Name="content" Type="ntext" Nullable="false" />
+    <Property Name="answer_a" Type="ntext" Nullable="false" />
+    <Property Name="answer_b" Type="ntext" Nullable="false" />
+    <Property Name="answer_c" Type="ntext" Nullable="false" />
+    <Property Name="answer_d" Type="ntext" Nullable="false" />
+    <Property Name="correct_answer" Type="ntext" Nullable="false" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="quests_of_test">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="test_code" Type="int" Nullable="false" />
+    <Property Name="id_question" Type="int" Nullable="false" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="scores">
+    <Key>
+      <PropertyRef Name="id_student" />
+      <PropertyRef Name="test_code" />
+    </Key>
+    <Property Name="id_score" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_student" Type="int" Nullable="false" />
+    <Property Name="test_code" Type="int" Nullable="false" />
+    <Property Name="score_number" Type="float" Nullable="false" />
+    <Property Name="detail" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="time_finish" Type="datetime" />
+  </EntityType>
+  <EntityType Name="specialities">
+    <Key>
+      <PropertyRef Name="id_speciality" />
+    </Key>
+    <Property Name="id_speciality" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="speciality_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_db' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="spt_fallback_db">
+    <Key>
+      <PropertyRef Name="xserver_name" />
+      <PropertyRef Name="xdttm_ins" />
+      <PropertyRef Name="xdttm_last_ins_upd" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="dbid" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="version" />
+    </Key>
+    <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+    <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+    <Property Name="xfallback_dbid" Type="smallint" />
+    <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="dbid" Type="smallint" Nullable="false" />
+    <Property Name="status" Type="smallint" Nullable="false" />
+    <Property Name="version" Type="smallint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_dev' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="spt_fallback_dev">
+    <Key>
+      <PropertyRef Name="xserver_name" />
+      <PropertyRef Name="xdttm_ins" />
+      <PropertyRef Name="xdttm_last_ins_upd" />
+      <PropertyRef Name="low" />
+      <PropertyRef Name="high" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="phyname" />
+    </Key>
+    <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+    <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+    <Property Name="xfallback_low" Type="int" />
+    <Property Name="xfallback_drive" Type="char" MaxLength="2" />
+    <Property Name="low" Type="int" Nullable="false" />
+    <Property Name="high" Type="int" Nullable="false" />
+    <Property Name="status" Type="smallint" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="phyname" Type="varchar" MaxLength="127" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_fallback_usg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="spt_fallback_usg">
+    <Key>
+      <PropertyRef Name="xserver_name" />
+      <PropertyRef Name="xdttm_ins" />
+      <PropertyRef Name="xdttm_last_ins_upd" />
+      <PropertyRef Name="dbid" />
+      <PropertyRef Name="segmap" />
+      <PropertyRef Name="lstart" />
+      <PropertyRef Name="sizepg" />
+      <PropertyRef Name="vstart" />
+    </Key>
+    <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+    <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+    <Property Name="xfallback_vstart" Type="int" />
+    <Property Name="dbid" Type="smallint" Nullable="false" />
+    <Property Name="segmap" Type="int" Nullable="false" />
+    <Property Name="lstart" Type="int" Nullable="false" />
+    <Property Name="sizepg" Type="int" Nullable="false" />
+    <Property Name="vstart" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="spt_monitor">
+    <Key>
+      <PropertyRef Name="lastrun" />
+      <PropertyRef Name="cpu_busy" />
+      <PropertyRef Name="io_busy" />
+      <PropertyRef Name="idle" />
+      <PropertyRef Name="pack_received" />
+      <PropertyRef Name="pack_sent" />
+      <PropertyRef Name="connections" />
+      <PropertyRef Name="pack_errors" />
+      <PropertyRef Name="total_read" />
+      <PropertyRef Name="total_write" />
+      <PropertyRef Name="total_errors" />
+    </Key>
+    <Property Name="lastrun" Type="datetime" Nullable="false" />
+    <Property Name="cpu_busy" Type="int" Nullable="false" />
+    <Property Name="io_busy" Type="int" Nullable="false" />
+    <Property Name="idle" Type="int" Nullable="false" />
+    <Property Name="pack_received" Type="int" Nullable="false" />
+    <Property Name="pack_sent" Type="int" Nullable="false" />
+    <Property Name="connections" Type="int" Nullable="false" />
+    <Property Name="pack_errors" Type="int" Nullable="false" />
+    <Property Name="total_read" Type="int" Nullable="false" />
+    <Property Name="total_write" Type="int" Nullable="false" />
+    <Property Name="total_errors" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="statuses">
+    <Key>
+      <PropertyRef Name="id_status" />
+    </Key>
+    <Property Name="id_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="student_test_detail">
+    <Key>
+      <PropertyRef Name="id_student" />
+      <PropertyRef Name="test_code" />
+      <PropertyRef Name="id_question" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_student" Type="int" Nullable="false" />
+    <Property Name="test_code" Type="int" Nullable="false" />
+    <Property Name="id_question" Type="int" Nullable="false" />
+    <Property Name="answer_a" Type="ntext" Nullable="false" />
+    <Property Name="answer_b" Type="ntext" Nullable="false" />
+    <Property Name="answer_c" Type="ntext" Nullable="false" />
+    <Property Name="answer_d" Type="ntext" Nullable="false" />
+    <Property Name="student_answer" Type="ntext" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="id_student" />
+    </Key>
+    <Property Name="id_student" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="avatar" Type="varchar" MaxLength="255" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="birthday" Type="date" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="45" />
+    <Property Name="id_permission" Type="int" Nullable="false" />
+    <Property Name="id_class" Type="int" Nullable="false" />
+    <Property Name="id_speciality" Type="int" Nullable="false" />
+    <Property Name="is_testing" Type="int" />
+    <Property Name="time_start" Type="datetime" />
+    <Property Name="time_remaining" Type="varchar" MaxLength="10" />
+    <Property Name="last_login" Type="datetime" />
+    <Property Name="last_seen" Type="nvarchar" MaxLength="100" />
+    <Property Name="last_seen_url" Type="varchar" MaxLength="100" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="subjects">
+    <Key>
+      <PropertyRef Name="id_subject" />
+    </Key>
+    <Property Name="id_subject" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subject_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="teachers">
+    <Key>
+      <PropertyRef Name="id_teacher" />
+    </Key>
+    <Property Name="id_teacher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="avatar" Type="varchar" MaxLength="255" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="birthday" Type="date" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="45" />
+    <Property Name="id_permission" Type="int" Nullable="false" />
+    <Property Name="id_speciality" Type="int" Nullable="false" />
+    <Property Name="last_login" Type="datetime" />
+    <Property Name="last_seen" Type="nvarchar" MaxLength="100" />
+    <Property Name="last_seen_url" Type="varchar" MaxLength="100" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tests">
+    <Key>
+      <PropertyRef Name="test_code" />
+    </Key>
+    <Property Name="test_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="test_code" Type="int" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="id_subject" Type="int" Nullable="false" />
+    <Property Name="total_questions" Type="int" Nullable="false" />
+    <Property Name="time_to_do" Type="int" Nullable="false" />
+    <Property Name="note" Type="ntext" />
+    <Property Name="id_status" Type="int" Nullable="false" />
+    <Property Name="timestamps" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'master.dbo.spt_values' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="spt_values">
+    <Key>
+      <PropertyRef Name="number" />
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="35" />
+    <Property Name="number" Type="int" Nullable="false" />
+    <Property Name="type" Type="nchar" MaxLength="3" Nullable="false" />
+    <Property Name="low" Type="int" />
+    <Property Name="high" Type="int" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <Association Name="FK__admins__id_permi__46E78A0C">
+    <End Role="permissions" Type="Self.permissions" Multiplicity="1" />
+    <End Role="admins" Type="Self.admins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="permissions">
+        <PropertyRef Name="id_permission" />
+      </Principal>
+      <Dependent Role="admins">
+        <PropertyRef Name="id_permission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'master.dbo.HoaDon' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__HoaDon__MaKH__15702A09" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'master.dbo.HoaDon' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__HoaDon__MaNV__16644E42" />-->
+  <Association Name="FK__questions__id_su__5629CD9C">
+    <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+    <End Role="questions" Type="Self.questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subjects">
+        <PropertyRef Name="id_subject" />
+      </Principal>
+      <Dependent Role="questions">
+        <PropertyRef Name="id_subject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__scores__id_stude__60A75C0F">
+    <End Role="students" Type="Self.students" Multiplicity="1" />
+    <End Role="scores" Type="Self.scores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="id_student" />
+      </Principal>
+      <Dependent Role="scores">
+        <PropertyRef Name="id_student" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students__id_cla__5070F446">
+    <End Role="classes" Type="Self.classes" Multiplicity="1" />
+    <End Role="students" Type="Self.students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="classes">
+        <PropertyRef Name="id_class" />
+      </Principal>
+      <Dependent Role="students">
+        <PropertyRef Name="id_class" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students__id_per__4F7CD00D">
+    <End Role="permissions" Type="Self.permissions" Multiplicity="1" />
+    <End Role="students" Type="Self.students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="permissions">
+        <PropertyRef Name="id_permission" />
+      </Principal>
+      <Dependent Role="students">
+        <PropertyRef Name="id_permission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students__id_spe__5165187F">
+    <End Role="specialities" Type="Self.specialities" Multiplicity="1" />
+    <End Role="students" Type="Self.students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="specialities">
+        <PropertyRef Name="id_speciality" />
+      </Principal>
+      <Dependent Role="students">
+        <PropertyRef Name="id_speciality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__teachers__id_per__4AB81AF0">
+    <End Role="permissions" Type="Self.permissions" Multiplicity="1" />
+    <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="permissions">
+        <PropertyRef Name="id_permission" />
+      </Principal>
+      <Dependent Role="teachers">
+        <PropertyRef Name="id_permission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__teachers__id_spe__4BAC3F29">
+    <End Role="specialities" Type="Self.specialities" Multiplicity="1" />
+    <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="specialities">
+        <PropertyRef Name="id_speciality" />
+      </Principal>
+      <Dependent Role="teachers">
+        <PropertyRef Name="id_speciality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tests__id_status__59FA5E80">
+    <End Role="statuses" Type="Self.statuses" Multiplicity="1" />
+    <End Role="tests" Type="Self.tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuses">
+        <PropertyRef Name="id_status" />
+      </Principal>
+      <Dependent Role="tests">
+        <PropertyRef Name="id_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tests__id_subjec__59063A47">
+    <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+    <End Role="tests" Type="Self.tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subjects">
+        <PropertyRef Name="id_subject" />
+      </Principal>
+      <Dependent Role="tests">
+        <PropertyRef Name="id_subject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_grade">
+    <End Role="grades" Type="Self.grades" Multiplicity="1" />
+    <End Role="classes" Type="Self.classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grades">
+        <PropertyRef Name="id_grade" />
+      </Principal>
+      <Dependent Role="classes">
+        <PropertyRef Name="id_grade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_quests_of_test_questions">
+    <End Role="questions" Type="Self.questions" Multiplicity="1" />
+    <End Role="quests_of_test" Type="Self.quests_of_test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="questions">
+        <PropertyRef Name="id_question" />
+      </Principal>
+      <Dependent Role="quests_of_test">
+        <PropertyRef Name="id_question" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_quests_of_test_tests">
+    <End Role="tests" Type="Self.tests" Multiplicity="1" />
+    <End Role="quests_of_test" Type="Self.quests_of_test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tests">
+        <PropertyRef Name="test_code" />
+      </Principal>
+      <Dependent Role="quests_of_test">
+        <PropertyRef Name="test_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_scores_tests">
+    <End Role="tests" Type="Self.tests" Multiplicity="1" />
+    <End Role="scores" Type="Self.scores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tests">
+        <PropertyRef Name="test_code" />
+      </Principal>
+      <Dependent Role="scores">
+        <PropertyRef Name="test_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_speciality">
+    <End Role="specialities" Type="Self.specialities" Multiplicity="1" />
+    <End Role="classes" Type="Self.classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="specialities">
+        <PropertyRef Name="id_speciality" />
+      </Principal>
+      <Dependent Role="classes">
+        <PropertyRef Name="id_speciality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="pr01" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr02" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="pr04" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="manv" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Proc11" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ngay" Type="date" Mode="In" />
+    <Parameter Name="MaKH" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Proc15" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MaSP" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Proc16" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ngay" Type="date" Mode="In" />
+    <Parameter Name="hdtype" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Proc6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MaKH" Type="char" Mode="In" />
+  </Function>
+  <Function Name="sp_MScleanupmergepublisher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_MSrepl_startup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ThemCuonSach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="isbn" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="masterModelStoreContainer">
+    <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="classes" EntityType="Self.classes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="grades" EntityType="Self.grades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="permissions" EntityType="Self.permissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="questions" EntityType="Self.questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="quests_of_test" EntityType="Self.quests_of_test" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="scores" EntityType="Self.scores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="specialities" EntityType="Self.specialities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statuses" EntityType="Self.statuses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="student_test_detail" EntityType="Self.student_test_detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subjects" EntityType="Self.subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="teachers" EntityType="Self.teachers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tests" EntityType="Self.tests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MSreplication_options].[optname] AS [optname], 
+    [MSreplication_options].[value] AS [value], 
+    [MSreplication_options].[major_version] AS [major_version], 
+    [MSreplication_options].[minor_version] AS [minor_version], 
+    [MSreplication_options].[revision] AS [revision], 
+    [MSreplication_options].[install_failures] AS [install_failures]
+    FROM [dbo].[MSreplication_options] AS [MSreplication_options]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [spt_fallback_db].[xserver_name] AS [xserver_name], 
+    [spt_fallback_db].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_db].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_db].[xfallback_dbid] AS [xfallback_dbid], 
+    [spt_fallback_db].[name] AS [name], 
+    [spt_fallback_db].[dbid] AS [dbid], 
+    [spt_fallback_db].[status] AS [status], 
+    [spt_fallback_db].[version] AS [version]
+    FROM [dbo].[spt_fallback_db] AS [spt_fallback_db]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [spt_fallback_dev].[xserver_name] AS [xserver_name], 
+    [spt_fallback_dev].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_dev].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_dev].[xfallback_low] AS [xfallback_low], 
+    [spt_fallback_dev].[xfallback_drive] AS [xfallback_drive], 
+    [spt_fallback_dev].[low] AS [low], 
+    [spt_fallback_dev].[high] AS [high], 
+    [spt_fallback_dev].[status] AS [status], 
+    [spt_fallback_dev].[name] AS [name], 
+    [spt_fallback_dev].[phyname] AS [phyname]
+    FROM [dbo].[spt_fallback_dev] AS [spt_fallback_dev]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [spt_fallback_usg].[xserver_name] AS [xserver_name], 
+    [spt_fallback_usg].[xdttm_ins] AS [xdttm_ins], 
+    [spt_fallback_usg].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+    [spt_fallback_usg].[xfallback_vstart] AS [xfallback_vstart], 
+    [spt_fallback_usg].[dbid] AS [dbid], 
+    [spt_fallback_usg].[segmap] AS [segmap], 
+    [spt_fallback_usg].[lstart] AS [lstart], 
+    [spt_fallback_usg].[sizepg] AS [sizepg], 
+    [spt_fallback_usg].[vstart] AS [vstart]
+    FROM [dbo].[spt_fallback_usg] AS [spt_fallback_usg]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [spt_monitor].[lastrun] AS [lastrun], 
+    [spt_monitor].[cpu_busy] AS [cpu_busy], 
+    [spt_monitor].[io_busy] AS [io_busy], 
+    [spt_monitor].[idle] AS [idle], 
+    [spt_monitor].[pack_received] AS [pack_received], 
+    [spt_monitor].[pack_sent] AS [pack_sent], 
+    [spt_monitor].[connections] AS [connections], 
+    [spt_monitor].[pack_errors] AS [pack_errors], 
+    [spt_monitor].[total_read] AS [total_read], 
+    [spt_monitor].[total_write] AS [total_write], 
+    [spt_monitor].[total_errors] AS [total_errors]
+    FROM [dbo].[spt_monitor] AS [spt_monitor]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="spt_values" EntityType="Self.spt_values" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [spt_values].[name] AS [name], 
+    [spt_values].[number] AS [number], 
+    [spt_values].[type] AS [type], 
+    [spt_values].[low] AS [low], 
+    [spt_values].[high] AS [high], 
+    [spt_values].[status] AS [status]
+    FROM [dbo].[spt_values] AS [spt_values]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__admins__id_permi__46E78A0C" Association="Self.FK__admins__id_permi__46E78A0C">
+      <End Role="permissions" EntitySet="permissions" />
+      <End Role="admins" EntitySet="admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__questions__id_su__5629CD9C" Association="Self.FK__questions__id_su__5629CD9C">
+      <End Role="subjects" EntitySet="subjects" />
+      <End Role="questions" EntitySet="questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__scores__id_stude__60A75C0F" Association="Self.FK__scores__id_stude__60A75C0F">
+      <End Role="students" EntitySet="students" />
+      <End Role="scores" EntitySet="scores" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students__id_cla__5070F446" Association="Self.FK__students__id_cla__5070F446">
+      <End Role="classes" EntitySet="classes" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students__id_per__4F7CD00D" Association="Self.FK__students__id_per__4F7CD00D">
+      <End Role="permissions" EntitySet="permissions" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students__id_spe__5165187F" Association="Self.FK__students__id_spe__5165187F">
+      <End Role="specialities" EntitySet="specialities" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__teachers__id_per__4AB81AF0" Association="Self.FK__teachers__id_per__4AB81AF0">
+      <End Role="permissions" EntitySet="permissions" />
+      <End Role="teachers" EntitySet="teachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__teachers__id_spe__4BAC3F29" Association="Self.FK__teachers__id_spe__4BAC3F29">
+      <End Role="specialities" EntitySet="specialities" />
+      <End Role="teachers" EntitySet="teachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tests__id_status__59FA5E80" Association="Self.FK__tests__id_status__59FA5E80">
+      <End Role="statuses" EntitySet="statuses" />
+      <End Role="tests" EntitySet="tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tests__id_subjec__59063A47" Association="Self.FK__tests__id_subjec__59063A47">
+      <End Role="subjects" EntitySet="subjects" />
+      <End Role="tests" EntitySet="tests" />
+    </AssociationSet>
+    <AssociationSet Name="fk_grade" Association="Self.fk_grade">
+      <End Role="grades" EntitySet="grades" />
+      <End Role="classes" EntitySet="classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_quests_of_test_questions" Association="Self.FK_quests_of_test_questions">
+      <End Role="questions" EntitySet="questions" />
+      <End Role="quests_of_test" EntitySet="quests_of_test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_quests_of_test_tests" Association="Self.FK_quests_of_test_tests">
+      <End Role="tests" EntitySet="tests" />
+      <End Role="quests_of_test" EntitySet="quests_of_test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_scores_tests" Association="Self.FK_scores_tests">
+      <End Role="tests" EntitySet="tests" />
+      <End Role="scores" EntitySet="scores" />
+    </AssociationSet>
+    <AssociationSet Name="fk_speciality" Association="Self.fk_speciality">
+      <End Role="specialities" EntitySet="specialities" />
+      <End Role="classes" EntitySet="classes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TMDTProject.Models.DoiTac>
+@{
+    Layout = "~/Views/SharedAdmin/AdminSharedLayout.cshtml";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Danh sách đối tác</h1>
+    <a href="/Admin/ThemDoiTac" class="btn btn-success btn-circle">
+        <i class="fas fa-plus"></i>
+    </a>
+    @*<a href="#" class="btn btn-danger btn-circle">
+            <i class="fas fa-trash"></i>
+        </a>*@
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh Sách Đối Tác</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="dataTable table_doitac" class="table table-striped dataTables_wrapper">
+                    <colgroup>
+                        <col style="width: 6%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 44%">
+                        <col style="width: 22%">
+                        <col style="width: 8%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Loại DT</th>
+                            <th>Loại DV</th>
+                            <th>Tên đối tác</th>
+                            <th>Thông tin liên hệ</th>
+                            <th>Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int stt = 0;
+                            foreach (TMDTProject.Models.DoiTac doiTac in Model)
+                            {
+                                stt++;
+                                <tr>
+                                    <td>@stt</td>
+                                    <td>@doiTac.LoaiDoiTac.TenLoaiDT</td>
+                                    <td>@doiTac.LoaiDichVu.TenLoaiDV</td>
+                                    <td>@doiTac.TenDT</td>
+                                    <td>@doiTac.ThongTinLienHe</td>
+                                    <td><a href="/Admin/SuaDoiTac/@doiTac.MaDT">Sửa</a>&nbsp;|&nbsp;<a href="/Admin/XoaDoiTac/@doiTac.MaDT" )">Xóa</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TMDTProject.Models.DonDat>
+@{
+    ViewBag.Title = "QuanLyDonDat";
+    Layout = "~/Views/SharedAdmin/AdminSharedLayout.cshtml";
+}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Danh sách đối tác</h1>
+    <a href="/Admin/ThemDonDat" class="btn btn-success btn-circle">
+        <i class="fas fa-plus"></i>
+    </a>
+    @*<a href="#" class="btn btn-danger btn-circle">
+            <i class="fas fa-trash"></i>
+        </a>*@
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh Sách Đơn Hàng</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="dataTable table_doitac" class="table table-striped dataTables_wrapper">
+                    <colgroup>
+                        <col style="width: 20%">
+                        <col style="width: 20%">
+                        <col style="width: 20%">
+                        <col style="width: 20%">
+                        <col style="width: 20%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Mã Đơn</th>
+                            <th>Khách Hàng</th>
+                            <th>Ngày Đặt</th>
+                            <th>Số Lượng Khách</th>
+                            <th>Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (TMDTProject.Models.DonDat doiTac in Model)
+                            {
+                                <tr>
+                                    <td>@doiTac.MaDon</td>
+                                    <td>@(doiTac.KhachHang != null ? doiTac.KhachHang.HoTen : "Không có khách hàng")</td>
+                                    <td>@doiTac.NgayDat</td>
+                                    <td>@doiTac.SoKhach</td>
+                                    <td><a href="/Admin/SuaDonDat/@doiTac.MaDon">Sửa</a>&nbsp;|&nbsp;<a href="/Admin/XoaDonDat/@doiTac.MaDon" )">Xóa</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
