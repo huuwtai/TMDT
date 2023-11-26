@@ -52,6 +52,7 @@
     <EntitySetMapping Name="DoiTacs">
       <EntityTypeMapping TypeName="TMDTModel.DoiTac">
         <MappingFragment StoreEntitySet="DoiTac">
+          <ScalarProperty Name="MaTK" ColumnName="MaTK" />
           <ScalarProperty Name="MaDT" ColumnName="MaDT" />
           <ScalarProperty Name="MaLoaiDV" ColumnName="MaLoaiDV" />
           <ScalarProperty Name="MaLoaiDT" ColumnName="MaLoaiDT" />
@@ -269,6 +270,56 @@
           <ScalarProperty Name="MaCode" ColumnName="MaCode" />
           <ScalarProperty Name="discount" ColumnName="discount" />
           <ScalarProperty Name="expiration_date" ColumnName="expiration_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BinhLuans">
+      <EntityTypeMapping TypeName="TMDTModel.BinhLuan">
+        <MappingFragment StoreEntitySet="BinhLuan">
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
+          <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BinhLuanPhongs">
+      <EntityTypeMapping TypeName="TMDTModel.BinhLuanPhong">
+        <MappingFragment StoreEntitySet="BinhLuanPhong">
+          <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+          <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BinhLuanThueXes">
+      <EntityTypeMapping TypeName="TMDTModel.BinhLuanThueXe">
+        <MappingFragment StoreEntitySet="BinhLuanThueXe">
+          <ScalarProperty Name="MaThueXe" ColumnName="MaThueXe" />
+          <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BinhLuanTourDuLiches">
+      <EntityTypeMapping TypeName="TMDTModel.BinhLuanTourDuLich">
+        <MappingFragment StoreEntitySet="BinhLuanTourDuLich">
+          <ScalarProperty Name="MaTour" ColumnName="MaTour" />
+          <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BinhLuanVeMayBays">
+      <EntityTypeMapping TypeName="TMDTModel.BinhLuanVeMayBay">
+        <MappingFragment StoreEntitySet="BinhLuanVeMayBay">
+          <ScalarProperty Name="MaVeMB" ColumnName="MaVeMB" />
+          <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BinhLuanVeXeKhaches">
+      <EntityTypeMapping TypeName="TMDTModel.BinhLuanVeXeKhach">
+        <MappingFragment StoreEntitySet="BinhLuanVeXeKhach">
+          <ScalarProperty Name="MaVeXe" ColumnName="MaVeXe" />
+          <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

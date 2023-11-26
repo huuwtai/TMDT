@@ -18,6 +18,7 @@ namespace TMDTProject.Models
         public VeXeKhach()
         {
             this.ChiTietVeXeKhaches = new HashSet<ChiTietVeXeKhach>();
+            this.BinhLuanVeXeKhaches = new HashSet<BinhLuanVeXeKhach>();
         }
     
         public int MaVeXe { get; set; }
@@ -35,5 +36,7 @@ namespace TMDTProject.Models
         public virtual ICollection<ChiTietVeXeKhach> ChiTietVeXeKhaches { get; set; }
         public virtual DoiTac DoiTac { get; set; }
         public virtual TinhTrang TinhTrang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BinhLuanVeXeKhach> BinhLuanVeXeKhaches { get; set; }
     }
 }

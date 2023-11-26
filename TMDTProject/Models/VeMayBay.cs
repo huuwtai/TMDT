@@ -18,6 +18,7 @@ namespace TMDTProject.Models
         public VeMayBay()
         {
             this.ChiTietVeMayBays = new HashSet<ChiTietVeMayBay>();
+            this.BinhLuanVeMayBays = new HashSet<BinhLuanVeMayBay>();
         }
     
         public int MaVeMB { get; set; }
@@ -32,5 +33,7 @@ namespace TMDTProject.Models
         public virtual ICollection<ChiTietVeMayBay> ChiTietVeMayBays { get; set; }
         public virtual DoiTac DoiTac { get; set; }
         public virtual TinhTrang TinhTrang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BinhLuanVeMayBay> BinhLuanVeMayBays { get; set; }
     }
 }

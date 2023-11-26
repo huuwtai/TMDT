@@ -1,0 +1,77 @@
+﻿@model IEnumerable<TMDTProject.Models.DoiTac>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenDT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnhLogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThongTinChiTiet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThongTinLienHe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoaiDoiTac.TenLoaiDT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoaiDichVu.TenLoaiDV)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnhLogo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThongTinChiTiet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThongTinLienHe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiDoiTac.TenLoaiDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiDichVu.TenLoaiDV)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.MaDT }) |
+                @Html.ActionLink("Details", "Details", new { id=item.MaDT }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.MaDT })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

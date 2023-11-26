@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5eb21be85b714a82898befc15b3c7e32" Name="Diagram1">
+      <Diagram DiagramId="5eb21be85b714a82898befc15b3c7e32" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="TMDTModel.ChiTietChoThueXe" Width="1.5" PointX="10.5" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.ChiTietPhongKhachSan" Width="1.5" PointX="12.75" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TMDTModel.ChiTietVeMayBay" Width="1.5" PointX="10.5" PointY="18.25" IsExpanded="true" />
@@ -61,6 +61,24 @@
         <AssociationConnector Association="TMDTModel.FK__TourDuLich__MaTT__6477ECF3" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__VeMayBay__MaTT__6D0D32F4" ManuallyRouted="false" />
         <AssociationConnector Association="TMDTModel.FK__VeXeKhach__MaTT__5441852A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TMDTModel.BinhLuan" Width="1.5" PointX="6" PointY="23.125" />
+        <EntityTypeShape EntityType="TMDTModel.BinhLuanPhong" Width="1.5" PointX="12.75" PointY="24" />
+        <EntityTypeShape EntityType="TMDTModel.BinhLuanThueXe" Width="1.5" PointX="8.25" PointY="20.125" />
+        <EntityTypeShape EntityType="TMDTModel.BinhLuanTourDuLich" Width="1.5" PointX="13.5" PointY="18.125" />
+        <EntityTypeShape EntityType="TMDTModel.BinhLuanVeMayBay" Width="1.5" PointX="10.5" PointY="22.125" />
+        <EntityTypeShape EntityType="TMDTModel.BinhLuanVeXeKhach" Width="1.5" PointX="13.5" PointY="21" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuan__MaNguo__3C34F16F" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanP__MaBin__4B7734FF" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanT__MaBin__40058253" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanT__MaBin__4F47C5E3" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanV__MaBin__43D61337" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanV__MaBin__47A6A41B" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanP__MaPho__4A8310C6" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanT__MaThu__4E53A1AA" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanT__MaTou__3F115E1A" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanV__MaVeM__42E1EEFE" />
+        <AssociationConnector Association="TMDTModel.FK__BinhLuanV__MaVeX__46B27FE2" />
+        <AssociationConnector Association="TMDTModel.FK_MaTK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

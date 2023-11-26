@@ -33,6 +33,7 @@ namespace TMDTProject.Models
         public string ThongTinChiTiet { get; set; }
         public string ThongTinLienHe { get; set; }
         public string DiaChi { get; set; }
+        public Nullable<int> MaTK { get; set; }
     
         public virtual LoaiDoiTac LoaiDoiTac { get; set; }
         public virtual LoaiDichVu LoaiDichVu { get; set; }
@@ -48,5 +49,6 @@ namespace TMDTProject.Models
         public virtual ICollection<VeMayBay> VeMayBays { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VeXeKhach> VeXeKhaches { get; set; }
+        public virtual TaiKhoan TaiKhoan { get; set; }
     }
 }

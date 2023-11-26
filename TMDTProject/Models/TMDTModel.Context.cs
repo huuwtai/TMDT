@@ -49,5 +49,11 @@ namespace TMDTProject.Models
         public virtual DbSet<VeMayBay> VeMayBays { get; set; }
         public virtual DbSet<VeXeKhach> VeXeKhaches { get; set; }
         public virtual DbSet<voucher> vouchers { get; set; }
+        public virtual DbSet<BinhLuan> BinhLuans { get; set; }
+        public virtual DbSet<BinhLuanPhong> BinhLuanPhongs { get; set; }
+        public virtual DbSet<BinhLuanThueXe> BinhLuanThueXes { get; set; }
+        public virtual DbSet<BinhLuanTourDuLich> BinhLuanTourDuLiches { get; set; }
+        public virtual DbSet<BinhLuanVeMayBay> BinhLuanVeMayBays { get; set; }
+        public virtual DbSet<BinhLuanVeXeKhach> BinhLuanVeXeKhaches { get; set; }
     }
 }

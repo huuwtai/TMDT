@@ -14,6 +14,12 @@ namespace TMDTProject.Models
     
     public partial class TourDuLich
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TourDuLich()
+        {
+            this.BinhLuanTourDuLiches = new HashSet<BinhLuanTourDuLich>();
+        }
+    
         public int MaTour { get; set; }
         public Nullable<int> MaDT { get; set; }
         public string TenTour { get; set; }
@@ -24,5 +30,7 @@ namespace TMDTProject.Models
     
         public virtual DoiTac DoiTac { get; set; }
         public virtual TinhTrang TinhTrang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BinhLuanTourDuLich> BinhLuanTourDuLiches { get; set; }
     }
 }

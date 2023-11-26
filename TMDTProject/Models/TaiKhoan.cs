@@ -19,6 +19,8 @@ namespace TMDTProject.Models
         {
             this.KhachHangs = new HashSet<KhachHang>();
             this.TinTucs = new HashSet<TinTuc>();
+            this.BinhLuans = new HashSet<BinhLuan>();
+            this.DoiTacs = new HashSet<DoiTac>();
         }
     
         public int MaTK { get; set; }
@@ -31,5 +33,9 @@ namespace TMDTProject.Models
         public virtual PhanQuyen PhanQuyen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TinTuc> TinTucs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BinhLuan> BinhLuans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DoiTac> DoiTacs { get; set; }
     }
 }

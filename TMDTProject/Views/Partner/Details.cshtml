@@ -1,0 +1,82 @@
+﻿@model TMDTProject.Models.DoiTac
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>DoiTac</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TenDT)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TenDT)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AnhLogo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AnhLogo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ThongTinChiTiet)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ThongTinChiTiet)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ThongTinLienHe)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ThongTinLienHe)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LoaiDoiTac.TenLoaiDT)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LoaiDoiTac.TenLoaiDT)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LoaiDichVu.TenLoaiDV)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LoaiDichVu.TenLoaiDV)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaDT }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

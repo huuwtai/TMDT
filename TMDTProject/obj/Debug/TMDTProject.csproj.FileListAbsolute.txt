@@ -81,3 +81,10 @@ C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\obj\Debug\TMDTProject.cspr
 C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\obj\Debug\TMDTProject.csproj.CopyComplete
 C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\obj\Debug\TMDTProject.dll
 C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\obj\Debug\TMDTProject.pdb
+C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\bin\Microsoft.Owin.dll
+C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\bin\Microsoft.Owin.Security.dll
+C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\bin\Owin.dll
+C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\bin\Microsoft.Owin.xml
+C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\admin\Documents\TMDT\TMDTProject\TMDTProject\bin\Microsoft.Owin.Security.xml

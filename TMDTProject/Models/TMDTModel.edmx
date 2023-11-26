@@ -4,7 +4,51 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TMDTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TMDTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BinhLuan">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="int" Nullable="false" />
+          <Property Name="MaNguoiDung" Type="int" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="ThoiGian" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BinhLuanPhong">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="int" Nullable="false" />
+          <Property Name="MaPhong" Type="int" />
+        </EntityType>
+        <EntityType Name="BinhLuanThueXe">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="int" Nullable="false" />
+          <Property Name="MaThueXe" Type="int" />
+        </EntityType>
+        <EntityType Name="BinhLuanTourDuLich">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="int" Nullable="false" />
+          <Property Name="MaTour" Type="int" />
+        </EntityType>
+        <EntityType Name="BinhLuanVeMayBay">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="int" Nullable="false" />
+          <Property Name="MaVeMB" Type="int" />
+        </EntityType>
+        <EntityType Name="BinhLuanVeXeKhach">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="int" Nullable="false" />
+          <Property Name="MaVeXe" Type="int" />
+        </EntityType>
         <EntityType Name="ChiTietChoThueXe">
           <Key>
             <PropertyRef Name="MaChiTiet" />
@@ -60,6 +104,7 @@
           <Property Name="ThongTinChiTiet" Type="nvarchar(max)" />
           <Property Name="ThongTinLienHe" Type="nvarchar(max)" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+          <Property Name="MaTK" Type="int" />
         </EntityType>
         <EntityType Name="DonDat">
           <Key>
@@ -252,6 +297,138 @@
           <Property Name="discount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="expiration_date" Type="date" />
         </EntityType>
+        <Association Name="FK__BinhLuan__MaNguo__3C34F16F">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="MaTK" />
+            </Principal>
+            <Dependent Role="BinhLuan">
+              <PropertyRef Name="MaNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanP__MaBin__4B7734FF">
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="1" />
+          <End Role="BinhLuanPhong" Type="Self.BinhLuanPhong" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanPhong">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanP__MaPho__4A8310C6">
+          <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
+          <End Role="BinhLuanPhong" Type="Self.BinhLuanPhong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phong">
+              <PropertyRef Name="MaPhong" />
+            </Principal>
+            <Dependent Role="BinhLuanPhong">
+              <PropertyRef Name="MaPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanT__MaBin__40058253">
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="1" />
+          <End Role="BinhLuanTourDuLich" Type="Self.BinhLuanTourDuLich" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanTourDuLich">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanT__MaBin__4F47C5E3">
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="1" />
+          <End Role="BinhLuanThueXe" Type="Self.BinhLuanThueXe" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanThueXe">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanT__MaThu__4E53A1AA">
+          <End Role="ThueXe" Type="Self.ThueXe" Multiplicity="0..1" />
+          <End Role="BinhLuanThueXe" Type="Self.BinhLuanThueXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThueXe">
+              <PropertyRef Name="MaThueXe" />
+            </Principal>
+            <Dependent Role="BinhLuanThueXe">
+              <PropertyRef Name="MaThueXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanT__MaTou__3F115E1A">
+          <End Role="TourDuLich" Type="Self.TourDuLich" Multiplicity="0..1" />
+          <End Role="BinhLuanTourDuLich" Type="Self.BinhLuanTourDuLich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TourDuLich">
+              <PropertyRef Name="MaTour" />
+            </Principal>
+            <Dependent Role="BinhLuanTourDuLich">
+              <PropertyRef Name="MaTour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanV__MaBin__43D61337">
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="1" />
+          <End Role="BinhLuanVeMayBay" Type="Self.BinhLuanVeMayBay" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanVeMayBay">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanV__MaBin__47A6A41B">
+          <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="1" />
+          <End Role="BinhLuanVeXeKhach" Type="Self.BinhLuanVeXeKhach" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanVeXeKhach">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanV__MaVeM__42E1EEFE">
+          <End Role="VeMayBay" Type="Self.VeMayBay" Multiplicity="0..1" />
+          <End Role="BinhLuanVeMayBay" Type="Self.BinhLuanVeMayBay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VeMayBay">
+              <PropertyRef Name="MaVeMB" />
+            </Principal>
+            <Dependent Role="BinhLuanVeMayBay">
+              <PropertyRef Name="MaVeMB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanV__MaVeX__46B27FE2">
+          <End Role="VeXeKhach" Type="Self.VeXeKhach" Multiplicity="0..1" />
+          <End Role="BinhLuanVeXeKhach" Type="Self.BinhLuanVeXeKhach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VeXeKhach">
+              <PropertyRef Name="MaVeXe" />
+            </Principal>
+            <Dependent Role="BinhLuanVeXeKhach">
+              <PropertyRef Name="MaVeXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ChiTietCh__MaDon__7E37BEF6">
           <End Role="DonDat" Type="Self.DonDat" Multiplicity="0..1" />
           <End Role="ChiTietChoThueXe" Type="Self.ChiTietChoThueXe" Multiplicity="*" />
@@ -636,7 +813,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MaTK">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+          <End Role="DoiTac" Type="Self.DoiTac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="MaTK" />
+            </Principal>
+            <Dependent Role="DoiTac">
+              <PropertyRef Name="MaTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TMDTModelStoreContainer">
+          <EntitySet Name="BinhLuan" EntityType="Self.BinhLuan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BinhLuanPhong" EntityType="Self.BinhLuanPhong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BinhLuanThueXe" EntityType="Self.BinhLuanThueXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BinhLuanTourDuLich" EntityType="Self.BinhLuanTourDuLich" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BinhLuanVeMayBay" EntityType="Self.BinhLuanVeMayBay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BinhLuanVeXeKhach" EntityType="Self.BinhLuanVeXeKhach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietChoThueXe" EntityType="Self.ChiTietChoThueXe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietPhongKhachSan" EntityType="Self.ChiTietPhongKhachSan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietVeMayBay" EntityType="Self.ChiTietVeMayBay" Schema="dbo" store:Type="Tables" />
@@ -661,6 +856,50 @@
           <EntitySet Name="VeMayBay" EntityType="Self.VeMayBay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VeXeKhach" EntityType="Self.VeXeKhach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="voucher" EntityType="Self.voucher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BinhLuan__MaNguo__3C34F16F" Association="Self.FK__BinhLuan__MaNguo__3C34F16F">
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanP__MaBin__4B7734FF" Association="Self.FK__BinhLuanP__MaBin__4B7734FF">
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+            <End Role="BinhLuanPhong" EntitySet="BinhLuanPhong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanP__MaPho__4A8310C6" Association="Self.FK__BinhLuanP__MaPho__4A8310C6">
+            <End Role="Phong" EntitySet="Phong" />
+            <End Role="BinhLuanPhong" EntitySet="BinhLuanPhong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanT__MaBin__40058253" Association="Self.FK__BinhLuanT__MaBin__40058253">
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+            <End Role="BinhLuanTourDuLich" EntitySet="BinhLuanTourDuLich" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanT__MaBin__4F47C5E3" Association="Self.FK__BinhLuanT__MaBin__4F47C5E3">
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+            <End Role="BinhLuanThueXe" EntitySet="BinhLuanThueXe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanT__MaThu__4E53A1AA" Association="Self.FK__BinhLuanT__MaThu__4E53A1AA">
+            <End Role="ThueXe" EntitySet="ThueXe" />
+            <End Role="BinhLuanThueXe" EntitySet="BinhLuanThueXe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanT__MaTou__3F115E1A" Association="Self.FK__BinhLuanT__MaTou__3F115E1A">
+            <End Role="TourDuLich" EntitySet="TourDuLich" />
+            <End Role="BinhLuanTourDuLich" EntitySet="BinhLuanTourDuLich" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanV__MaBin__43D61337" Association="Self.FK__BinhLuanV__MaBin__43D61337">
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+            <End Role="BinhLuanVeMayBay" EntitySet="BinhLuanVeMayBay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanV__MaBin__47A6A41B" Association="Self.FK__BinhLuanV__MaBin__47A6A41B">
+            <End Role="BinhLuan" EntitySet="BinhLuan" />
+            <End Role="BinhLuanVeXeKhach" EntitySet="BinhLuanVeXeKhach" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanV__MaVeM__42E1EEFE" Association="Self.FK__BinhLuanV__MaVeM__42E1EEFE">
+            <End Role="VeMayBay" EntitySet="VeMayBay" />
+            <End Role="BinhLuanVeMayBay" EntitySet="BinhLuanVeMayBay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanV__MaVeX__46B27FE2" Association="Self.FK__BinhLuanV__MaVeX__46B27FE2">
+            <End Role="VeXeKhach" EntitySet="VeXeKhach" />
+            <End Role="BinhLuanVeXeKhach" EntitySet="BinhLuanVeXeKhach" />
+          </AssociationSet>
           <AssociationSet Name="FK__ChiTietCh__MaDon__7E37BEF6" Association="Self.FK__ChiTietCh__MaDon__7E37BEF6">
             <End Role="DonDat" EntitySet="DonDat" />
             <End Role="ChiTietChoThueXe" EntitySet="ChiTietChoThueXe" />
@@ -789,9 +1028,12 @@
             <End Role="TinhTrang" EntitySet="TinhTrang" />
             <End Role="VeXeKhach" EntitySet="VeXeKhach" />
           </AssociationSet>
+          <AssociationSet Name="FK_MaTK" Association="Self.FK_MaTK">
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+            <End Role="DoiTac" EntitySet="DoiTac" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TMDTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -867,6 +1109,8 @@
           <NavigationProperty Name="TourDuLiches" Relationship="Self.FK__TourDuLich__MaDT__6383C8BA" FromRole="DoiTac" ToRole="TourDuLich" />
           <NavigationProperty Name="VeMayBays" Relationship="Self.FK__VeMayBay__MaDT__6C190EBB" FromRole="DoiTac" ToRole="VeMayBay" />
           <NavigationProperty Name="VeXeKhaches" Relationship="Self.FK__VeXeKhach__MaDT__534D60F1" FromRole="DoiTac" ToRole="VeXeKhach" />
+          <Property Name="MaTK" Type="Int32" />
+          <NavigationProperty Name="TaiKhoan" Relationship="TMDTModel.FK_MaTK" FromRole="DoiTac" ToRole="TaiKhoan" />
         </EntityType>
         <EntityType Name="DonDat">
           <Key>
@@ -993,6 +1237,7 @@
           <NavigationProperty Name="KhachSan" Relationship="Self.FK__Phong__MaKS__5BE2A6F2" FromRole="Phong" ToRole="KhachSan" />
           <NavigationProperty Name="LoaiPhong" Relationship="Self.FK__Phong__MaLoaiPho__5AEE82B9" FromRole="Phong" ToRole="LoaiPhong" />
           <NavigationProperty Name="TinhTrang" Relationship="Self.FK__Phong__MaTT__5CD6CB2B" FromRole="Phong" ToRole="TinhTrang" />
+          <NavigationProperty Name="BinhLuanPhongs" Relationship="TMDTModel.FK__BinhLuanP__MaPho__4A8310C6" FromRole="Phong" ToRole="BinhLuanPhong" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -1005,6 +1250,8 @@
           <NavigationProperty Name="KhachHangs" Relationship="Self.FK__KhachHang__MaTK__3D5E1FD2" FromRole="TaiKhoan" ToRole="KhachHang" />
           <NavigationProperty Name="PhanQuyen" Relationship="Self.FK__TaiKhoan__MaPQ__398D8EEE" FromRole="TaiKhoan" ToRole="PhanQuyen" />
           <NavigationProperty Name="TinTucs" Relationship="Self.FK__TinTuc__TacGia__2B0A656D" FromRole="TaiKhoan" ToRole="TinTuc" />
+          <NavigationProperty Name="BinhLuans" Relationship="TMDTModel.FK__BinhLuan__MaNguo__3C34F16F" FromRole="TaiKhoan" ToRole="BinhLuan" />
+          <NavigationProperty Name="DoiTacs" Relationship="TMDTModel.FK_MaTK" FromRole="TaiKhoan" ToRole="DoiTac" />
         </EntityType>
         <EntityType Name="ThueXe">
           <Key>
@@ -1020,6 +1267,7 @@
           <NavigationProperty Name="ChiTietChoThueXes" Relationship="Self.FK__ChiTietCh__MaThu__7F2BE32F" FromRole="ThueXe" ToRole="ChiTietChoThueXe" />
           <NavigationProperty Name="DoiTac" Relationship="Self.FK__ThueXe__MaDT__6754599E" FromRole="ThueXe" ToRole="DoiTac" />
           <NavigationProperty Name="TinhTrang" Relationship="Self.FK__ThueXe__MaTT__68487DD7" FromRole="ThueXe" ToRole="TinhTrang" />
+          <NavigationProperty Name="BinhLuanThueXes" Relationship="TMDTModel.FK__BinhLuanT__MaThu__4E53A1AA" FromRole="ThueXe" ToRole="BinhLuanThueXe" />
         </EntityType>
         <EntityType Name="TinhTrang">
           <Key>
@@ -1063,6 +1311,7 @@
           <Property Name="MaTT" Type="Int32" />
           <NavigationProperty Name="DoiTac" Relationship="Self.FK__TourDuLich__MaDT__6383C8BA" FromRole="TourDuLich" ToRole="DoiTac" />
           <NavigationProperty Name="TinhTrang" Relationship="Self.FK__TourDuLich__MaTT__6477ECF3" FromRole="TourDuLich" ToRole="TinhTrang" />
+          <NavigationProperty Name="BinhLuanTourDuLiches" Relationship="TMDTModel.FK__BinhLuanT__MaTou__3F115E1A" FromRole="TourDuLich" ToRole="BinhLuanTourDuLich" />
         </EntityType>
         <EntityType Name="VeMayBay">
           <Key>
@@ -1078,6 +1327,7 @@
           <NavigationProperty Name="ChiTietVeMayBays" Relationship="Self.FK__ChiTietVe__MaVeM__73BA3083" FromRole="VeMayBay" ToRole="ChiTietVeMayBay" />
           <NavigationProperty Name="DoiTac" Relationship="Self.FK__VeMayBay__MaDT__6C190EBB" FromRole="VeMayBay" ToRole="DoiTac" />
           <NavigationProperty Name="TinhTrang" Relationship="Self.FK__VeMayBay__MaTT__6D0D32F4" FromRole="VeMayBay" ToRole="TinhTrang" />
+          <NavigationProperty Name="BinhLuanVeMayBays" Relationship="TMDTModel.FK__BinhLuanV__MaVeM__42E1EEFE" FromRole="VeMayBay" ToRole="BinhLuanVeMayBay" />
         </EntityType>
         <EntityType Name="VeXeKhach">
           <Key>
@@ -1096,6 +1346,7 @@
           <NavigationProperty Name="ChiTietVeXeKhaches" Relationship="Self.FK__ChiTietVe__MaVeX__778AC167" FromRole="VeXeKhach" ToRole="ChiTietVeXeKhach" />
           <NavigationProperty Name="DoiTac" Relationship="Self.FK__VeXeKhach__MaDT__534D60F1" FromRole="VeXeKhach" ToRole="DoiTac" />
           <NavigationProperty Name="TinhTrang" Relationship="Self.FK__VeXeKhach__MaTT__5441852A" FromRole="VeXeKhach" ToRole="TinhTrang" />
+          <NavigationProperty Name="BinhLuanVeXeKhaches" Relationship="TMDTModel.FK__BinhLuanV__MaVeX__46B27FE2" FromRole="VeXeKhach" ToRole="BinhLuanVeXeKhach" />
         </EntityType>
         <EntityType Name="voucher">
           <Key>
@@ -1643,7 +1894,265 @@
             <End Role="TinhTrang" EntitySet="TinhTrangs" />
             <End Role="VeXeKhach" EntitySet="VeXeKhaches" />
           </AssociationSet>
+          <EntitySet Name="BinhLuans" EntityType="TMDTModel.BinhLuan" />
+          <EntitySet Name="BinhLuanPhongs" EntityType="TMDTModel.BinhLuanPhong" />
+          <EntitySet Name="BinhLuanThueXes" EntityType="TMDTModel.BinhLuanThueXe" />
+          <EntitySet Name="BinhLuanTourDuLiches" EntityType="TMDTModel.BinhLuanTourDuLich" />
+          <EntitySet Name="BinhLuanVeMayBays" EntityType="TMDTModel.BinhLuanVeMayBay" />
+          <EntitySet Name="BinhLuanVeXeKhaches" EntityType="TMDTModel.BinhLuanVeXeKhach" />
+          <AssociationSet Name="FK__BinhLuan__MaNguo__3C34F16F" Association="TMDTModel.FK__BinhLuan__MaNguo__3C34F16F">
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+            <End Role="BinhLuan" EntitySet="BinhLuans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanP__MaBin__4B7734FF" Association="TMDTModel.FK__BinhLuanP__MaBin__4B7734FF">
+            <End Role="BinhLuan" EntitySet="BinhLuans" />
+            <End Role="BinhLuanPhong" EntitySet="BinhLuanPhongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanT__MaBin__40058253" Association="TMDTModel.FK__BinhLuanT__MaBin__40058253">
+            <End Role="BinhLuan" EntitySet="BinhLuans" />
+            <End Role="BinhLuanTourDuLich" EntitySet="BinhLuanTourDuLiches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanT__MaBin__4F47C5E3" Association="TMDTModel.FK__BinhLuanT__MaBin__4F47C5E3">
+            <End Role="BinhLuan" EntitySet="BinhLuans" />
+            <End Role="BinhLuanThueXe" EntitySet="BinhLuanThueXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanV__MaBin__43D61337" Association="TMDTModel.FK__BinhLuanV__MaBin__43D61337">
+            <End Role="BinhLuan" EntitySet="BinhLuans" />
+            <End Role="BinhLuanVeMayBay" EntitySet="BinhLuanVeMayBays" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanV__MaBin__47A6A41B" Association="TMDTModel.FK__BinhLuanV__MaBin__47A6A41B">
+            <End Role="BinhLuan" EntitySet="BinhLuans" />
+            <End Role="BinhLuanVeXeKhach" EntitySet="BinhLuanVeXeKhaches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanP__MaPho__4A8310C6" Association="TMDTModel.FK__BinhLuanP__MaPho__4A8310C6">
+            <End Role="Phong" EntitySet="Phongs" />
+            <End Role="BinhLuanPhong" EntitySet="BinhLuanPhongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanT__MaThu__4E53A1AA" Association="TMDTModel.FK__BinhLuanT__MaThu__4E53A1AA">
+            <End Role="ThueXe" EntitySet="ThueXes" />
+            <End Role="BinhLuanThueXe" EntitySet="BinhLuanThueXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanT__MaTou__3F115E1A" Association="TMDTModel.FK__BinhLuanT__MaTou__3F115E1A">
+            <End Role="TourDuLich" EntitySet="TourDuLiches" />
+            <End Role="BinhLuanTourDuLich" EntitySet="BinhLuanTourDuLiches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanV__MaVeM__42E1EEFE" Association="TMDTModel.FK__BinhLuanV__MaVeM__42E1EEFE">
+            <End Role="VeMayBay" EntitySet="VeMayBays" />
+            <End Role="BinhLuanVeMayBay" EntitySet="BinhLuanVeMayBays" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BinhLuanV__MaVeX__46B27FE2" Association="TMDTModel.FK__BinhLuanV__MaVeX__46B27FE2">
+            <End Role="VeXeKhach" EntitySet="VeXeKhaches" />
+            <End Role="BinhLuanVeXeKhach" EntitySet="BinhLuanVeXeKhaches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaTK" Association="TMDTModel.FK_MaTK">
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+            <End Role="DoiTac" EntitySet="DoiTacs" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="BinhLuan">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="Int32" Nullable="false" />
+          <Property Name="MaNguoiDung" Type="Int32" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TaiKhoan" Relationship="TMDTModel.FK__BinhLuan__MaNguo__3C34F16F" FromRole="BinhLuan" ToRole="TaiKhoan" />
+          <NavigationProperty Name="BinhLuanPhong" Relationship="TMDTModel.FK__BinhLuanP__MaBin__4B7734FF" FromRole="BinhLuan" ToRole="BinhLuanPhong" />
+          <NavigationProperty Name="BinhLuanTourDuLich" Relationship="TMDTModel.FK__BinhLuanT__MaBin__40058253" FromRole="BinhLuan" ToRole="BinhLuanTourDuLich" />
+          <NavigationProperty Name="BinhLuanThueXe" Relationship="TMDTModel.FK__BinhLuanT__MaBin__4F47C5E3" FromRole="BinhLuan" ToRole="BinhLuanThueXe" />
+          <NavigationProperty Name="BinhLuanVeMayBay" Relationship="TMDTModel.FK__BinhLuanV__MaBin__43D61337" FromRole="BinhLuan" ToRole="BinhLuanVeMayBay" />
+          <NavigationProperty Name="BinhLuanVeXeKhach" Relationship="TMDTModel.FK__BinhLuanV__MaBin__47A6A41B" FromRole="BinhLuan" ToRole="BinhLuanVeXeKhach" />
+        </EntityType>
+        <EntityType Name="BinhLuanPhong">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="Int32" Nullable="false" />
+          <Property Name="MaPhong" Type="Int32" />
+          <NavigationProperty Name="BinhLuan" Relationship="TMDTModel.FK__BinhLuanP__MaBin__4B7734FF" FromRole="BinhLuanPhong" ToRole="BinhLuan" />
+          <NavigationProperty Name="Phong" Relationship="TMDTModel.FK__BinhLuanP__MaPho__4A8310C6" FromRole="BinhLuanPhong" ToRole="Phong" />
+        </EntityType>
+        <EntityType Name="BinhLuanThueXe">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="Int32" Nullable="false" />
+          <Property Name="MaThueXe" Type="Int32" />
+          <NavigationProperty Name="BinhLuan" Relationship="TMDTModel.FK__BinhLuanT__MaBin__4F47C5E3" FromRole="BinhLuanThueXe" ToRole="BinhLuan" />
+          <NavigationProperty Name="ThueXe" Relationship="TMDTModel.FK__BinhLuanT__MaThu__4E53A1AA" FromRole="BinhLuanThueXe" ToRole="ThueXe" />
+        </EntityType>
+        <EntityType Name="BinhLuanTourDuLich">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="Int32" Nullable="false" />
+          <Property Name="MaTour" Type="Int32" />
+          <NavigationProperty Name="BinhLuan" Relationship="TMDTModel.FK__BinhLuanT__MaBin__40058253" FromRole="BinhLuanTourDuLich" ToRole="BinhLuan" />
+          <NavigationProperty Name="TourDuLich" Relationship="TMDTModel.FK__BinhLuanT__MaTou__3F115E1A" FromRole="BinhLuanTourDuLich" ToRole="TourDuLich" />
+        </EntityType>
+        <EntityType Name="BinhLuanVeMayBay">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="Int32" Nullable="false" />
+          <Property Name="MaVeMB" Type="Int32" />
+          <NavigationProperty Name="BinhLuan" Relationship="TMDTModel.FK__BinhLuanV__MaBin__43D61337" FromRole="BinhLuanVeMayBay" ToRole="BinhLuan" />
+          <NavigationProperty Name="VeMayBay" Relationship="TMDTModel.FK__BinhLuanV__MaVeM__42E1EEFE" FromRole="BinhLuanVeMayBay" ToRole="VeMayBay" />
+        </EntityType>
+        <EntityType Name="BinhLuanVeXeKhach">
+          <Key>
+            <PropertyRef Name="MaBinhLuan" />
+          </Key>
+          <Property Name="MaBinhLuan" Type="Int32" Nullable="false" />
+          <Property Name="MaVeXe" Type="Int32" />
+          <NavigationProperty Name="BinhLuan" Relationship="TMDTModel.FK__BinhLuanV__MaBin__47A6A41B" FromRole="BinhLuanVeXeKhach" ToRole="BinhLuan" />
+          <NavigationProperty Name="VeXeKhach" Relationship="TMDTModel.FK__BinhLuanV__MaVeX__46B27FE2" FromRole="BinhLuanVeXeKhach" ToRole="VeXeKhach" />
+        </EntityType>
+        <Association Name="FK__BinhLuan__MaNguo__3C34F16F">
+          <End Type="TMDTModel.TaiKhoan" Role="TaiKhoan" Multiplicity="0..1" />
+          <End Type="TMDTModel.BinhLuan" Role="BinhLuan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="MaTK" />
+            </Principal>
+            <Dependent Role="BinhLuan">
+              <PropertyRef Name="MaNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanP__MaBin__4B7734FF">
+          <End Type="TMDTModel.BinhLuan" Role="BinhLuan" Multiplicity="1" />
+          <End Type="TMDTModel.BinhLuanPhong" Role="BinhLuanPhong" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanPhong">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanT__MaBin__40058253">
+          <End Type="TMDTModel.BinhLuan" Role="BinhLuan" Multiplicity="1" />
+          <End Type="TMDTModel.BinhLuanTourDuLich" Role="BinhLuanTourDuLich" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanTourDuLich">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanT__MaBin__4F47C5E3">
+          <End Type="TMDTModel.BinhLuan" Role="BinhLuan" Multiplicity="1" />
+          <End Type="TMDTModel.BinhLuanThueXe" Role="BinhLuanThueXe" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanThueXe">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanV__MaBin__43D61337">
+          <End Type="TMDTModel.BinhLuan" Role="BinhLuan" Multiplicity="1" />
+          <End Type="TMDTModel.BinhLuanVeMayBay" Role="BinhLuanVeMayBay" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanVeMayBay">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanV__MaBin__47A6A41B">
+          <End Type="TMDTModel.BinhLuan" Role="BinhLuan" Multiplicity="1" />
+          <End Type="TMDTModel.BinhLuanVeXeKhach" Role="BinhLuanVeXeKhach" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BinhLuan">
+              <PropertyRef Name="MaBinhLuan" />
+            </Principal>
+            <Dependent Role="BinhLuanVeXeKhach">
+              <PropertyRef Name="MaBinhLuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanP__MaPho__4A8310C6">
+          <End Type="TMDTModel.Phong" Role="Phong" Multiplicity="0..1" />
+          <End Type="TMDTModel.BinhLuanPhong" Role="BinhLuanPhong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phong">
+              <PropertyRef Name="MaPhong" />
+            </Principal>
+            <Dependent Role="BinhLuanPhong">
+              <PropertyRef Name="MaPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanT__MaThu__4E53A1AA">
+          <End Type="TMDTModel.ThueXe" Role="ThueXe" Multiplicity="0..1" />
+          <End Type="TMDTModel.BinhLuanThueXe" Role="BinhLuanThueXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThueXe">
+              <PropertyRef Name="MaThueXe" />
+            </Principal>
+            <Dependent Role="BinhLuanThueXe">
+              <PropertyRef Name="MaThueXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanT__MaTou__3F115E1A">
+          <End Type="TMDTModel.TourDuLich" Role="TourDuLich" Multiplicity="0..1" />
+          <End Type="TMDTModel.BinhLuanTourDuLich" Role="BinhLuanTourDuLich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TourDuLich">
+              <PropertyRef Name="MaTour" />
+            </Principal>
+            <Dependent Role="BinhLuanTourDuLich">
+              <PropertyRef Name="MaTour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanV__MaVeM__42E1EEFE">
+          <End Type="TMDTModel.VeMayBay" Role="VeMayBay" Multiplicity="0..1" />
+          <End Type="TMDTModel.BinhLuanVeMayBay" Role="BinhLuanVeMayBay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VeMayBay">
+              <PropertyRef Name="MaVeMB" />
+            </Principal>
+            <Dependent Role="BinhLuanVeMayBay">
+              <PropertyRef Name="MaVeMB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BinhLuanV__MaVeX__46B27FE2">
+          <End Type="TMDTModel.VeXeKhach" Role="VeXeKhach" Multiplicity="0..1" />
+          <End Type="TMDTModel.BinhLuanVeXeKhach" Role="BinhLuanVeXeKhach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VeXeKhach">
+              <PropertyRef Name="MaVeXe" />
+            </Principal>
+            <Dependent Role="BinhLuanVeXeKhach">
+              <PropertyRef Name="MaVeXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaTK">
+          <End Type="TMDTModel.TaiKhoan" Role="TaiKhoan" Multiplicity="0..1" />
+          <End Type="TMDTModel.DoiTac" Role="DoiTac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="MaTK" />
+            </Principal>
+            <Dependent Role="DoiTac">
+              <PropertyRef Name="MaTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1701,6 +2210,7 @@
           <EntitySetMapping Name="DoiTacs">
             <EntityTypeMapping TypeName="TMDTModel.DoiTac">
               <MappingFragment StoreEntitySet="DoiTac">
+                <ScalarProperty Name="MaTK" ColumnName="MaTK" />
                 <ScalarProperty Name="MaDT" ColumnName="MaDT" />
                 <ScalarProperty Name="MaLoaiDV" ColumnName="MaLoaiDV" />
                 <ScalarProperty Name="MaLoaiDT" ColumnName="MaLoaiDT" />
@@ -1918,6 +2428,56 @@
                 <ScalarProperty Name="MaCode" ColumnName="MaCode" />
                 <ScalarProperty Name="discount" ColumnName="discount" />
                 <ScalarProperty Name="expiration_date" ColumnName="expiration_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BinhLuans">
+            <EntityTypeMapping TypeName="TMDTModel.BinhLuan">
+              <MappingFragment StoreEntitySet="BinhLuan">
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
+                <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BinhLuanPhongs">
+            <EntityTypeMapping TypeName="TMDTModel.BinhLuanPhong">
+              <MappingFragment StoreEntitySet="BinhLuanPhong">
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BinhLuanThueXes">
+            <EntityTypeMapping TypeName="TMDTModel.BinhLuanThueXe">
+              <MappingFragment StoreEntitySet="BinhLuanThueXe">
+                <ScalarProperty Name="MaThueXe" ColumnName="MaThueXe" />
+                <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BinhLuanTourDuLiches">
+            <EntityTypeMapping TypeName="TMDTModel.BinhLuanTourDuLich">
+              <MappingFragment StoreEntitySet="BinhLuanTourDuLich">
+                <ScalarProperty Name="MaTour" ColumnName="MaTour" />
+                <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BinhLuanVeMayBays">
+            <EntityTypeMapping TypeName="TMDTModel.BinhLuanVeMayBay">
+              <MappingFragment StoreEntitySet="BinhLuanVeMayBay">
+                <ScalarProperty Name="MaVeMB" ColumnName="MaVeMB" />
+                <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BinhLuanVeXeKhaches">
+            <EntityTypeMapping TypeName="TMDTModel.BinhLuanVeXeKhach">
+              <MappingFragment StoreEntitySet="BinhLuanVeXeKhach">
+                <ScalarProperty Name="MaVeXe" ColumnName="MaVeXe" />
+                <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

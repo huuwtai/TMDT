@@ -1,0 +1,62 @@
+﻿@model TMDTProject.Models.DonDat
+@{
+    ViewBag.Title = "Book Tour";
+}
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="~/Content/sb-admin-2.css" rel="stylesheet" />
+
+<h2>Book Tour</h2>
+
+<p>Xin chào, @ViewBag.TenKhachHang! Vui lòng chọn ngày đặt và số lượng khách cho tour.</p>
+
+@using (Html.BeginForm("BookTour", "Customer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-group">
+    @Html.HiddenFor(model => model.MaKH, new { @Value = Session["MaKH"] })
+  
+</div>
+    @*<div class="form-group">
+        @Html.HiddenFor(new { @Value = ViewBag.Tour.MaTour })
+    </div>*@
+    <div class="form-group">
+        <div class="col-lg-6 subject-card mt-lg-0 mt-4">
+            <div class="subject-card-header p-4">
+                <div class="card_title p-lg-4d-block">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5 subject-img">
+                            <img src="~/Asset/images/@ViewBag.Tour.Anh" class="img-fluid" alt="">
+                        </div>
+
+                        <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                            <h4>@ViewBag.Tour.TenTour</h4>
+                            <p>@ViewBag.Tour.ChiTiet</p>
+                            <div class="dst-btm">
+                                <h6 class=""> Start From </h6>
+                                <span>@ViewBag.Tour.Gia</span>
+                            </div>
+                            <p class="sub-para">@ViewBag.Tour.DoiTac.TenDT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NgayDat, "Ngày đặt:")
+        @Html.TextBoxFor(model => model.NgayDat, new { @class = "form-control form-control-user", type = "date", style = "width: 100%; height: auto;" })
+        @Html.ValidationMessageFor(model => model.NgayDat)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SoKhach, "Số lượng khách:")
+        @Html.EditorFor(model => model.SoKhach, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <button type="submit" class="btn btn-primary">Đặt tour</button>
+}

@@ -1,0 +1,21 @@
+﻿@model List<TMDTProject.Models.DonDat>
+
+<h2>Danh sách đơn đã đặt</h2>
+
+<table class="table">
+    <tr>
+        <th>Mã đơn</th>
+        <th>Ngày đặt</th>
+        <th>Số khách</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MaDon</td>
+            <td>@item.NgayDat</td>
+            <td>@item.SoKhach</td>
+            <td>@Html.ActionLink("Xem chi tiết", "ViewOrder", new { id = item.MaDon }, new { @class = "btn btn-info" })</td>
+        </tr>
+    }
+</table>
