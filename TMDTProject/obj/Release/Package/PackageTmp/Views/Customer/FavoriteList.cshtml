@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TMDTProject.Models.YeuThich>
+
+@{
+    Layout = "~/Views/SharedAdmin/CustomerSharedLayout.cshtml";
+    ViewBag.Title = "Danh sách yêu thích";
+    var yeuThichDichVuList = ViewBag.YeuThichDichVuList as List<TMDTProject.Models.DichVu>;
+}
+
+<h2>Danh sách yêu thích</h2>
+@{
+    foreach (var dichvu in yeuThichDichVuList)
+    {
+        <div class="col-lg-6 subject-card mt-lg-0 mt-4">
+            <div class="subject-card-header p-4">
+                <a href="~/Customer/BookServices/@dichvu.MaDV" class="card_title p-lg-4d-block">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5 subject-img">
+                            <img src="~/Asset/images/@dichvu.Anh" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                            <h4>@dichvu.TenDV</h4>
+                            <p>@dichvu.ChiTiet</p>
+                            <div class="dst-btm">
+                                <h6 class=""> Start From </h6>
+                                <span>@dichvu.Gia</span>
+                            </div>
+                            <p class="sub-para">@dichvu.DoiTac.TenDT</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <hr />
+        </div>
+    }
+
+}
+

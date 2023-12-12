@@ -1,0 +1,24 @@
+﻿@model TMDTProject.Models.DoiTac
+
+@{
+    ViewBag.Title = "ViewInformation";
+    Layout = "~/Views/SharedAdmin/PartnerSharedLayout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<h2>Thông tin đối tác</h2>
+
+<div>
+    <img src="/Asset/images/@Model.AnhLogo" alt="Logo đối tác" style="width:200px;height:200px" />
+    <hr />
+    <h4><b>Mã đối tác:</b> @Model.MaDT</h4>
+    <h4><b>Tên đối tác: </b> @Model.TenDT</h4>
+    <h4><b>Thông tin chi tiết: </b> @Model.ThongTinChiTiet</h4>
+    <h4><b>Loại dịch vụ cung cấp: </b> @Model.LoaiDichVu.TenLoaiDV</h4>
+    <h4><b>Hạng đối tác: </b> @Model.LoaiDoiTac.TenLoaiDT</h4>
+    <h4><b>Địa chỉ: </b> @Model.DiaChi</h4>
+    <h4><b>Thông tin liên hệ: </b> @Model.ThongTinLienHe</h4>
+    <h4><b>Tên Đăng Nhập: </b> @Model.TaiKhoan.TenDN</h4>
+    <h4><b>Mật Khẩu Đăng Nhập: </b> <span id="password">********</span>  @Html.ActionLink("Đổi Mật Khẩu", "ChangePassword", null, new { @class = "btn btn-outline-warning" })</h4>
+</div>
+

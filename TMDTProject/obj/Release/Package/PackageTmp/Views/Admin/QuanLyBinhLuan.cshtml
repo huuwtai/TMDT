@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TMDTProject.Models.BinhLuan>
+
+@{
+    ViewBag.Title = "QuanLyBinhLuan";
+    Layout = "~/Views/SharedAdmin/AdminSharedLayout.cshtml";
+}
+
+<h2>Quản Lý Bình Luận</h2>
+
+<table class="table">
+    <tr class="text-center">
+        <th>Số Thứ Tự</th>
+        <th>
+            Nội Dung
+        </th>
+        <th>
+            Thời Gian
+        </th>
+        <th>
+            Tên Tài Khoản
+        </th>
+        <th>
+            Tên Dịch Vụ
+        </th>
+        <th>Đối Tác</th>
+    </tr>
+
+    @{
+        int stt = 0;
+        foreach (var item in Model)
+        {
+            stt++;
+        <tr class="text-center">
+            <td>@stt</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaiKhoan.TenDN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DichVu.TenDV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DichVu.DoiTac.TenDT)
+            </td>
+        </tr>
+        }
+    }
+
+</table>

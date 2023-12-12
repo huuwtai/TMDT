@@ -1,0 +1,58 @@
+﻿@model List<dynamic>
+
+@{
+    Layout = "~/Views/SharedAdmin/PartnerSharedLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Monthly Revenue Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="revenueChart" width="800" height="400"></canvas>
+    <button class="btn btn-success" onclick="exportChart()">Xuất Báo Cáo Doanh Thu</button>
+    <script>
+        var monthlyRevenueData = @Html.Raw(Json.Encode(ViewBag.MonthlyRevenue));
+
+        var months = monthlyRevenueData.map(function (item) {
+            return item.Month + '/' + item.Year;
+        });
+
+        var revenues = monthlyRevenueData.map(function (item) {
+            return item.TotalRevenue;
+        });
+
+        var ctx = document.getElementById('revenueChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Doanh Thu Theo Tháng',
+                    data: revenues,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        function exportChart() {
+            var link = document.createElement('a');
+            link.download = 'revenue_chart.png';
+            link.href = document.getElementById('revenueChart').toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>

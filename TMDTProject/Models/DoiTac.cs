@@ -17,12 +17,8 @@ namespace TMDTProject.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DoiTac()
         {
-            this.KhachSans = new HashSet<KhachSan>();
-            this.ThueXes = new HashSet<ThueXe>();
+            this.DichVus = new HashSet<DichVu>();
             this.TinTucs = new HashSet<TinTuc>();
-            this.TourDuLiches = new HashSet<TourDuLich>();
-            this.VeMayBays = new HashSet<VeMayBay>();
-            this.VeXeKhaches = new HashSet<VeXeKhach>();
         }
     
         public int MaDT { get; set; }
@@ -35,20 +31,12 @@ namespace TMDTProject.Models
         public string DiaChi { get; set; }
         public Nullable<int> MaTK { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DichVu> DichVus { get; set; }
         public virtual LoaiDoiTac LoaiDoiTac { get; set; }
         public virtual LoaiDichVu LoaiDichVu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachSan> KhachSans { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThueXe> ThueXes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TinTuc> TinTucs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TourDuLich> TourDuLiches { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VeMayBay> VeMayBays { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VeXeKhach> VeXeKhaches { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
     }
 }

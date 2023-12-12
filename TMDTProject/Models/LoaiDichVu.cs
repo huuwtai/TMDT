@@ -17,12 +17,15 @@ namespace TMDTProject.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LoaiDichVu()
         {
+            this.DichVus = new HashSet<DichVu>();
             this.DoiTacs = new HashSet<DoiTac>();
         }
     
         public int MaLoaiDV { get; set; }
         public string TenLoaiDV { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DichVu> DichVus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DoiTac> DoiTacs { get; set; }
     }

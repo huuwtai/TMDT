@@ -1,0 +1,80 @@
+﻿@model IEnumerable<TMDTProject.Models.KhachHang>
+@{
+    Layout = "~/Views/SharedAdmin/AdminSharedLayout.cshtml";
+}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Danh sách Khách Hàng</h1>
+    <a href="/Admin/ThemKhachHang" class="btn btn-success btn-circle">
+        <i class="fas fa-plus"></i>
+    </a>
+    @*<a href="#" class="btn btn-danger btn-circle">
+            <i class="fas fa-trash"></i>
+        </a>*@
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh Sách Khách Hàng</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="table_doitac" class="table table-striped dataTable">
+                    <colgroup>
+                        <col style="width: 5%">
+                        <col style="width: 10%">
+                        <col style="width: 15%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Mã KH</th>
+                            <th>Loại KH</th>
+                            <th>Họ và Tên</th>
+                            <th>Giới tính</th>
+                            <th>Ngày sinh</th>
+                            <th>Địa Chỉ</th>
+                            <th>Email</th>
+                            <th>SDT</th>
+                            <th>Facebook</th>
+                            <th>Tuỷ chỉnh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int stt = 0;
+                            foreach (TMDTProject.Models.KhachHang KhachHang in Model)
+                            {
+                                stt++;
+                                <tr>
+                                    <td>@KhachHang.MaKH</td>
+                                    <td>@KhachHang.LoaiKhachHang.TenLoaiKH</td>
+                                    <td>@KhachHang.HoTen</td>
+                                    <td>@KhachHang.GioiTinh</td>
+                                    <td>@KhachHang.NgaySinh</td>
+                                    <td>@KhachHang.DiaChi</td>
+                                    <td>@KhachHang.Email</td>
+                                    <td>@KhachHang.SDT</td>
+                                    <td>@KhachHang.Facebook</td>
+                                    <td><a href="/Admin/SuaKhachHang/@KhachHang.MaKH">Sửa</a>&nbsp;|&nbsp;<a href="/Admin/XoaKhachHang/@KhachHang.MaKH" )">Xóa</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+

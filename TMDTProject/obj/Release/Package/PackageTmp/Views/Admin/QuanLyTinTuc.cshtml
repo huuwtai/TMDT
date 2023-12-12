@@ -1,0 +1,74 @@
+﻿@model IEnumerable<TMDTProject.Models.TinTuc>
+@{ 
+    Layout = "~/Views/SharedAdmin/AdminSharedLayout.cshtml";
+}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Danh sách tin tức</h1>
+    <a href="/Admin/ThemTinTuc" class="btn btn-success btn-circle">
+        <i class="fas fa-plus"></i>
+    </a>
+    @*<a href="#" class="btn btn-danger btn-circle">
+            <i class="fas fa-trash"></i>
+        </a>*@
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh Sách Tin Tức</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="table_doitac" class="table table-striped dataTable">
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Mã Tin Tức</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội Dung</th>
+                            <th>Tên tác giả</th>
+                            <th>Ngày đăng</th>
+                            <th>Tên Khách Hàng</th>
+                            <th>Tên Đối Tác</th>
+                            <th>Danh Mục</th>
+                            <th>Tuỳ chỉnh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (TMDTProject.Models.TinTuc tin in Model)
+                            {
+                                <tr>
+                                    <td>@tin.MaTinTuc</td>
+                                    <td>@tin.TieuDe</td>
+                                    <td>@tin.NoiDung</td>
+                                    <td>@(tin.TaiKhoan != null ? tin.TaiKhoan.TenDN : "Không có tác giả")</td>
+                                    <td>@tin.NgayDang</td>
+                                    <td>@(tin.KhachHang != null ? tin.KhachHang.HoTen : "Không có khách hàng")</td>
+                                    <td>@(tin.DoiTac != null ? tin.DoiTac.TenDT : "Không có đối tác")</td>
+                                    <td>@tin.DanhMuc.TenDanhMuc</td>
+                                    <td><a href="/Admin/SuaTinTuc/@tin.MaTinTuc">Sửa</a>&nbsp;|&nbsp;<a href="/Admin/XoaTinTuc/@tin.MaTinTuc" )">Xóa</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

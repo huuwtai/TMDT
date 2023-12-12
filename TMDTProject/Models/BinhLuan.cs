@@ -18,12 +18,9 @@ namespace TMDTProject.Models
         public Nullable<int> MaNguoiDung { get; set; }
         public string NoiDung { get; set; }
         public Nullable<System.DateTime> ThoiGian { get; set; }
+        public Nullable<int> MaDV { get; set; }
     
         public virtual TaiKhoan TaiKhoan { get; set; }
-        public virtual BinhLuanPhong BinhLuanPhong { get; set; }
-        public virtual BinhLuanTourDuLich BinhLuanTourDuLich { get; set; }
-        public virtual BinhLuanThueXe BinhLuanThueXe { get; set; }
-        public virtual BinhLuanVeMayBay BinhLuanVeMayBay { get; set; }
-        public virtual BinhLuanVeXeKhach BinhLuanVeXeKhach { get; set; }
+        public virtual DichVu DichVu { get; set; }
     }
 }

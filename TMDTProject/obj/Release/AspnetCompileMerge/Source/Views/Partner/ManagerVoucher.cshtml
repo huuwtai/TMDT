@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TMDTProject.Models.voucher>
+
+@{
+    ViewBag.Title = "ManagerVoucher";
+    Layout = "~/Views/SharedAdmin/PartnerSharedLayout.cshtml";
+}
+
+<h2>Quản lý voucher</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "CreateVoucher",null, new { @class = "btn btn-outline-success" })
+</p>
+<table class="table">
+    <tr class="text-center">
+        <th>Số Thứ Tự</th>
+        <th>
+            Mã Code (Mã Quy Đổi)
+        </th>
+        <th>
+            Giá trị giảm
+        </th>
+        <th>
+            Ngày Hết Hạn
+        </th>
+        <th>Tuỳ Chỉnh</th>
+    </tr>
+
+    @{
+
+        int stt = 0;
+        foreach (var item in Model)
+        {
+            stt++;
+            <tr class="text-center">
+                
+                <td>@stt</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.expiration_date)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "EditVoucher", new { id = item.MaVoucher }, new { @class = "btn btn-outline-warning" }) |
+                    @Html.ActionLink("Xoá", "DeleteVoucher", new { id = item.MaVoucher }, new { @class = "btn btn-outline-danger", onclick = "return confirmDelete();" })
+                </td>
+            </tr>
+        }
+    }
+
+
+</table>
+<script>
+    function confirmDelete() {
+        return confirm("Bạn có chắc chắn muốn xoá voucher này không?");
+    }
+</script>

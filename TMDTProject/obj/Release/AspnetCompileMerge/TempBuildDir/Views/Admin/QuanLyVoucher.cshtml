@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TMDTProject.Models.voucher>
+@{
+    Layout = "~/Views/SharedAdmin/AdminSharedLayout.cshtml";
+}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Danh sách Voucher</h1>
+    <a href="/Admin/ThemVoucher" class="btn btn-success btn-circle">
+        <i class="fas fa-plus"></i>
+    </a>
+    @*<a href="#" class="btn btn-danger btn-circle">
+            <i class="fas fa-trash"></i>
+        </a>*@
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh Sách Voucher</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="table_doitac" class="table table-striped dataTable">
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 25%">
+                        <col style="width: 25%">
+                        <col style="width: 25%">
+                        <col style="width: 35%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã Voucher</th>
+                            <th>Mã Code</th>
+                            <th>Giá trị khuyến mãi(%)</th>
+                            <th>Ngày hết hạn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int stt = 0;
+                            foreach (TMDTProject.Models.voucher voucher in Model)
+                            {
+                                stt++;
+                                <tr>
+                                    <td>@stt</td>
+                                    <td>@voucher.MaVoucher</td>
+                                    <td>@voucher.MaCode</td>
+                                    <td>@voucher.discount</td>
+                                    <td>@voucher.expiration_date</td>
+                                    <td><a href="/Admin/SuaVoucher/@voucher.MaVoucher">Sửa</a>&nbsp;|&nbsp;<a href="/Admin/XoaVoucher/@voucher.MaVoucher" )">Xóa</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

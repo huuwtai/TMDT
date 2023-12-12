@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TMDTProject.Models.DichVu>
+
+@{
+    Layout = "~/Views/SharedAdmin/CustomerSharedLayout.cshtml";
+    ViewBag.Title = "Filtered Services";
+}
+
+<h2>Filtered Services</h2>
+
+@using (Html.BeginForm("FilteredServices", "Home", FormMethod.Get))
+{
+    <p>
+        Từ Khoá: @Html.TextBox("category", ViewBag.CurrentCategory as string)
+        Giá Thấp Nhất: @Html.TextBox("minPrice", ViewBag.CurrentMinPrice as string)
+        Giá Cao Nhất: @Html.TextBox("maxPrice", ViewBag.CurrentMaxPrice as string)
+        <input type="submit" value="Filter" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChiTiet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anh)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+               
+                    @Html.DisplayFor(modelItem => item.TenDV)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiTiet)
+            </td>
+            <td>
+                <a href="@Url.Action("ViewService", "Customer", new { id = item.MaDV })">
+                    <img src="~/Asset/images/@item.Anh" alt="Service Image" style="width: 100px; height: 100px;" />
+                </a>
+            </td>
+        </tr>
+    }
+
+
+</table>

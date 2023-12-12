@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #007bff;
+            color: #fff;
+            padding-top: 20px;
+        }
+
+            .sidebar a {
+                text-decoration: none;
+                color: #fff;
+                padding: 10px 20px;
+                display: block;
+            }
+
+                .sidebar a:hover{
+                    background-color: #0056b3;
+                }
+
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+     
+    </style>
+    <title>Đối Tác</title>
+</head>
+<body>
+    <div class="sidebar bg-primary">
+        <h2 class="text-center">Đối Tác</h2>
+        <div class="dropdown">
+            <h4 class="text-center">Chức Năng Đối Tác</h4>
+            <ul class="list-unstyled" aria-labelledby="dropdownMenuButton">
+                <li><a class="nav-link" href="~/Partner/ViewInformation">Xem Thông Tin Đối Tác</a></li>
+                <li><a class="nav-link" href="~/Partner/ManagerServices">Quản lý dịch vụ</a></li>
+                <li><a class="nav-link" href="~/Partner/ManagerVoucher">Quản lý voucher</a></li>
+                <li><a class="nav-link" href="~/Partner/ManagerBookServices">Quản lý đơn hàng của khách</a></li>
+                <li><a class="nav-link" href="~/Partner/ManagerRevenue">Quản lý doanh thu</a></li>
+                <li><a class="nav-link" href="~/Partner/ManagerComment">Quản lý bình luận dịch vụ</a></li>
+                <li><a class="nav-link" href="~/Partner/ManagerCustomer">Quản lý khách hàng</a></li>
+            </ul>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-danger btn-lg" href="~/Partner/Logout">Logout</button>
+        </div>
+       
+    </div>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

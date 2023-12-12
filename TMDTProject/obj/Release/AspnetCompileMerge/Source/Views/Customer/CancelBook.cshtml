@@ -1,0 +1,11 @@
+﻿@model TMDTProject.Models.DonDat
+
+<h2>Hủy đặt tour</h2>
+
+<p>Bạn có chắc chắn muốn hủy đặt tour này?</p>
+
+@using (Html.BeginForm("CancelBookConfirmed", "Customer", new { id = Model.MaDon }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Xác nhận" class="btn btn-danger" />
+}

@@ -1,0 +1,50 @@
+﻿@model TMDTProject.Models.DichVu
+
+@{
+    ViewBag.Title = "Chi tiết dịch vụ";
+    Layout = "~/Views/SharedAdmin/PartnerSharedLayout.cshtml";
+}
+
+<h2>Chi tiết dịch vụ</h2>
+
+<div>
+    <h4>Tên dịch vụ: @Model.TenDV</h4>
+
+    <img src="/Asset/images/@Model.Anh" alt="Hình ảnh dịch vụ" style="width:300px;height:300px" />
+
+    <dl class="dl-horizontal">
+        <dt>
+            Loại dịch vụ
+        </dt>
+        <dd>
+            @Model.LoaiDichVu.TenLoaiDV
+        </dd>
+        <dt>
+            Đối tác
+        </dt>
+        <dd>
+            @Model.DoiTac.TenDT
+        </dd>
+        <dt>
+            Giá
+        </dt>
+        <dd>
+            @Model.Gia
+        </dd>
+        <dt>
+            Chi tiết
+        </dt>
+        <dd>
+            @Model.ChiTiet
+        </dd>
+        <dt>
+            Tình trạng
+        </dt>
+        <dd>
+            @Model.TinhTrang.TenTT
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Quay lại", "ManagerServices" ,null, new { @class = "btn btn-outline-secondary" }) 
+</p>

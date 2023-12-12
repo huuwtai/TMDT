@@ -13,7 +13,7 @@ namespace TMDTProject.Controllers
 {
     public class AdminController : Controller
     {
-        private TMDTEntities2 db = new TMDTEntities2();
+        private TMDT_DBEntities1 db = new TMDT_DBEntities1();
         // GET: Admin
         public ActionResult Index()
         {
@@ -339,9 +339,10 @@ namespace TMDTProject.Controllers
         #region QuanLyDichVu
         public ActionResult QuanLyVeMayBay()
         {
-            var veMayBays = db.VeMayBays.Include(d => d.DoiTac).Include(d=> d.DoiTac.LoaiDichVu);
+            var veMayBays = db.DichVus.Include(d => d.DoiTac).Include(d => d.DoiTac.LoaiDichVu).Where(d => d.LoaiDV == 1);
             return View(veMayBays.ToList());
         }
+
         public ActionResult ThemVeMayBay()
         {
             ViewBag.MaDT = new SelectList(db.DoiTacs, "MaDT", "TenDT");
@@ -350,11 +351,12 @@ namespace TMDTProject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThemVeMayBay([Bind(Include = "MaVeMB,MaDT,TenVe,Anh,Gia,ChiTiet,MaTT")] VeMayBay ve)
+        public ActionResult ThemVeMayBay([Bind(Include = "MaDV,TenDV,LoaiDV,MaDT,Gia,ChiTiet,MaTT,Anh")] DichVu ve)
         {
             if (ModelState.IsValid)
             {
-                db.VeMayBays.Add(ve);
+                ve.LoaiDV = 1;
+                db.DichVus.Add(ve);
                 db.SaveChanges();
                 return RedirectToAction("/QuanLyVeMayBay");
             }
@@ -362,78 +364,78 @@ namespace TMDTProject.Controllers
             ViewBag.MaTT = new SelectList(db.TinhTrangs, "MaTT", "TenTT");
             return View(ve);
         }
-        public ActionResult SuaVeMayBay(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            VeMayBay ve = db.VeMayBays.Find(id);
-            if (ve == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.MaDT = new SelectList(db.DoiTacs, "MaDT", "TenDT");
-            ViewBag.MaTT = new SelectList(db.TinhTrangs, "MaTT", "TenTT");
-            return View(ve);
-        }
+        //public ActionResult SuaVeMayBay(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    VeMayBay ve = db.VeMayBays.Find(id);
+        //    if (ve == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.MaDT = new SelectList(db.DoiTacs, "MaDT", "TenDT");
+        //    ViewBag.MaTT = new SelectList(db.TinhTrangs, "MaTT", "TenTT");
+        //    return View(ve);
+        //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SuaVeMayBay([Bind(Include = "MaVeMB,MaDT,TenVe,Anh,Gia,ChiTiet,MaTT")] VeMayBay ve)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(ve).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("/QuanLyVeMayBay");
-            }
-            ViewBag.MaDT = new SelectList(db.DoiTacs, "MaDT", "TenDT");
-            ViewBag.MaTT = new SelectList(db.TinhTrangs, "MaTT", "TenTT");
-            return View(ve);
-        }
-        public ActionResult XoaVeMayBay(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            VeMayBay ve = db.VeMayBays.Find(id);
-            if (ve == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ve);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult SuaVeMayBay([Bind(Include = "MaVeMB,MaDT,TenVe,Anh,Gia,ChiTiet,MaTT")] VeMayBay ve)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(ve).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("/QuanLyVeMayBay");
+        //    }
+        //    ViewBag.MaDT = new SelectList(db.DoiTacs, "MaDT", "TenDT");
+        //    ViewBag.MaTT = new SelectList(db.TinhTrangs, "MaTT", "TenTT");
+        //    return View(ve);
+        //}
+        //public ActionResult XoaVeMayBay(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    VeMayBay ve = db.VeMayBays.Find(id);
+        //    if (ve == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(ve);
+        //}
 
-        [HttpPost, ActionName("XoaVeMayBay")]
-        [ValidateAntiForgeryToken]
-        public ActionResult XacNhanXoaVeMayBay(int id)
-        {
-            VeMayBay ve = db.VeMayBays.Find(id);
-            db.VeMayBays.Remove(ve);
-            db.SaveChanges();
-            return RedirectToAction("QuanLyVeMayBay");
-        }
+        //[HttpPost, ActionName("XoaVeMayBay")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult XacNhanXoaVeMayBay(int id)
+        //{
+        //    VeMayBay ve = db.VeMayBays.Find(id);
+        //    db.VeMayBays.Remove(ve);
+        //    db.SaveChanges();
+        //    return RedirectToAction("QuanLyVeMayBay");
+        //}
 
         public ActionResult QuanLyVeXeKhach()
         {
-            var veXeKhaches = db.VeXeKhaches.Include(d => d.DoiTac).Include(d => d.DoiTac.LoaiDichVu);
+            var veXeKhaches = db.DichVus.Include(d => d.DoiTac).Include(d => d.DoiTac.LoaiDichVu).Where(d => d.LoaiDV == 4);
             return View(veXeKhaches.ToList());
         }
         public ActionResult QuanLyTourDuLich()
         {
-            var tourDuLiches = db.TourDuLiches.Include(d => d.DoiTac).Include(d => d.DoiTac.LoaiDichVu);
+            var tourDuLiches = db.DichVus.Include(d => d.DoiTac).Include(d => d.DoiTac.LoaiDichVu).Where(d=>d.LoaiDV==5);
             return View(tourDuLiches.ToList());
         }
         public ActionResult QuanLyThueXe()
         {
-            var thueXes = db.ThueXes.Include(d => d.DoiTac).Include(d => d.DoiTac.LoaiDichVu);
+            var thueXes = db.DichVus.Include(d => d.DoiTac).Include(d => d.DoiTac.LoaiDichVu).Where(d => d.LoaiDV == 3);
             return View(thueXes.ToList());
         }
         public ActionResult QuanLyKhachSan()
         {
-            var khachSans = db.KhachSans.Include(d => d.DoiTac).Include(d => d.DoiTac.LoaiDichVu);
+            var khachSans = db.DichVus.Include(d => d.DoiTac).Include(d => d.DoiTac.LoaiDichVu).Where(d => d.LoaiDV == 2);
             return View(khachSans.ToList());
         }
         #endregion
@@ -460,6 +462,13 @@ namespace TMDTProject.Controllers
             }
             ViewBag.MaKhachHang = new SelectList(db.KhachHangs, "MaKH", "HoTen");
             return View(don);
+        }
+        #endregion
+        #region QuanLyBinhLuan
+        public ActionResult QuanLyBinhLuan()
+        {
+            var bl = db.BinhLuans;
+            return View(bl.ToList());
         }
         #endregion
         protected override void Dispose(bool disposing)

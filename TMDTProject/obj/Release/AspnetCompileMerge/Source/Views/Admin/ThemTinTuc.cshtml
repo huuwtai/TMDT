@@ -1,0 +1,80 @@
+﻿@model TMDTProject.Models.TinTuc
+@{
+    Layout = "~/Views/SharedAdmin/AdminSharedLayout.cshtml";
+}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Thêm Tin Tức</h1>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <label>Mã Tin Tức: </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaTinTuc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaTinTuc, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="LoaiDichVu">Danh Mục</label>
+                <<div class="col-md-10">
+                    @Html.DropDownList("MaDanhMuc", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="LoaiDichVu">Đến Khách Hàng</label>
+                <<div class="col-md-10">
+                    @Html.DropDownList("MaKhachHang", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaKhachHang, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="LoaiDichVu">Đến Đối Tác</label>
+                <<div class="col-md-10">
+                    @Html.DropDownList("MaDoiTac", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaDoiTac, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="LoaiDichVu">Tiêu đề tin tức</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="TenKH">Nội Dung Tin Tức</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="AnhLogo">Tác Giả</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("TacGia", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TacGia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="NgaySinh">Ngày Đăng</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayDang, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.NgayDang, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Thêm" class="btn btn-success" />
+                    <a href="~/Admin/QuanLyTinTuc" class="btn btn-danger">Huỷ</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

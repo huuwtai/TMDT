@@ -1,0 +1,50 @@
+﻿<h3>Dịch vụ chính:</h3>
+<div class="subject-card mt-lg-0 mt-4">
+    <div class="subject-card-header p-4">
+        <a href="~/Customer/BookServices/@Model.MaDV" class="card_title p-lg-4d-block" style="text-decoration:none; color:black;">
+            <div class="row align-items-center">
+                <div class="col-sm-5 subject-img">
+                    <img src="~/Asset/images/@Url.Content(Model.Anh)" class="img-fluid" alt="">
+                </div>
+                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                    <h4>@Model.TenDV</h4>
+                   <p>@Model.ChiTiet</p>
+                    <div class="dst-btm">
+                        <h6 class=""> Start From </h6>
+                        <span>@Model.Gia</span>
+                    </div>
+                    <p class="sub-para">@Model.DoiTac.TenDT</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <hr />
+</div>
+
+<h3>Các dịch vụ gợi ý:</h3>
+<div class="row">
+    @foreach (var suggestedProduct in ViewBag.SuggestedProducts)
+    {
+        <div class="col-lg-6 subject-card mt-lg-0 mt-4">
+            <div class="subject-card-header p-4">
+                <a href="~/Customer/BookServices/@suggestedProduct.MaDV" class="card_title p-lg-4d-block">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5 subject-img">
+                            <img src="~/Asset/images/@Url.Content(suggestedProduct.Anh)" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                            <h4>@suggestedProduct.TenDV</h4>
+                           <p>@suggestedProduct.ChiTiet</p>
+                            <div class="dst-btm">
+                                <h6 class=""> Start From </h6>
+                                <span>@suggestedProduct.Gia</span>
+                            </div>
+                            <p class="sub-para">@suggestedProduct.DoiTac.TenDT</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <hr />
+        </div>
+    }
+</div>

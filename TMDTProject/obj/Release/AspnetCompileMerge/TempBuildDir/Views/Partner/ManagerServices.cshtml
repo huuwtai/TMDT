@@ -1,0 +1,157 @@
+﻿@model IEnumerable<TMDTProject.Models.DichVu>
+
+@{
+    Layout = "~/Views/SharedAdmin/PartnerSharedLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ManagerServices</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/4e5140ee3b.js" crossorigin="anonymous"></script>
+    <style>
+        .search-container {
+            position: relative;
+            display: inline-block;
+        }
+
+            .search-container input[type="text"] {
+                padding-left: 30px;
+            }
+
+            .search-container i {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-6">
+            <p>
+                @Html.ActionLink("Thêm Mới", "CreateServices", null, new { @class = "btn btn-outline-success" })
+            </p>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <div class="search-container">
+                <i class="fa fa-search"></i>
+                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Tìm kiếm theo tên dịch vụ..." class="form-control">
+            </div>
+        </div>
+        </div>
+
+       
+        <table class="table" id="myTable">
+            <tr class="text-center">
+                <th>
+                    Tên Dịch Vụ
+                </th>
+                <th>
+                    Giá
+                </th>
+                <th>
+                    Chi Tiết
+                </th>
+                <th>
+                    Ảnh
+                </th>
+                <th>
+                    Loại Dịch Vụ
+                </th>
+                <th>
+                    Đối Tác
+                </th>
+                <th>
+                    Tình Trạng
+                </th>
+                <th>
+                    Tuỳ Chỉnh
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="text-center">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenDV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChiTiet)
+                    </td>
+                    <td>
+                        <img src="/Asset/images/@item.Anh" class="thumbnail-image" style=" width: 60px; height: 60px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LoaiDichVu.TenLoaiDV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoiTac.TenDT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TinhTrang.TenTT)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "EditService", new { id = item.MaDV }, new { @class = "btn btn-outline-warning" }) |
+                        @Html.ActionLink("Details", "DetailsService", new { id = item.MaDV }, new { @class = "btn btn-outline-info" }) |
+                        @Html.ActionLink("Xoá", "DeleteService", new { id = item.MaDV }, new { @class = "btn btn-outline-danger", onclick = "return confirmDelete();" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <p>
+            <button onclick="exportToExcel()" class="btn btn-outline-primary">Xuất Danh Sách</button>
+        </p>
+
+</body>
+</html>
+<script>
+    function confirmDelete() {
+        return confirm("Bạn có chắc chắn muốn xoá dịch vụ này không?");
+    }
+    function searchTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0]; 
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+<script>
+    function exportToExcel() {
+        /* Tạo một đối tượng workbook mới */
+        var wb = XLSX.utils.book_new();
+        /* Lấy danh sách các cột mà bạn muốn xuất */
+        var table = document.querySelector('table');
+        var ws = XLSX.utils.table_to_sheet(table, { raw: true });
+        /* Xóa cột "Tuỳ Chỉnh" từ đối tượng worksheet */
+        delete ws['Tuỳ Chỉnh'];
+        /* Thêm worksheet vào workbook */
+        XLSX.utils.book_append_sheet(wb, ws, "DanhSachDichVu");
+        /* Xuất file Excel */
+        XLSX.writeFile(wb, 'DanhSachDichVu.xlsx');
+    }
+</script>
+
+
+

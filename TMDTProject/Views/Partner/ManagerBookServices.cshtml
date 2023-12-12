@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TMDTProject.Models.ViewModels.BookServicesViewModel>
+
+@{
+    Layout = "~/Views/SharedAdmin/PartnerSharedLayout.cshtml";
+    ViewBag.Title = "Quản lý đơn đặt";
+}
+
+<h2>Thông tin đơn đặt</h2>
+
+<table class="table">
+    <colgroup>
+        <col style="width: 5%" />
+        <col style="width: 15%" />
+        <col style="width: 10%" />
+        <col style="width: 15%" />
+        <col style="width: 10%" />
+        <col style="width: 15%" />
+        <col style="width: 10%" />
+        <col style="width: 15%" />
+        <!-- Thêm các cột khác tùy theo yêu cầu của bạn -->
+    </colgroup>
+    <tr class="text-center">
+        <th>Mã đơn</th>
+        <th>Ngày đặt</th>
+        <th>Số lượng khách</th>
+        <th>Tên khách hàng</th>
+        <th>Tên dịch vụ</th>
+        <th>Ảnh</th>
+        <th>Giá tiền</th>
+        <th>Tình Trạng</th>
+        <!-- Thêm các cột khác tùy theo yêu cầu của bạn -->
+    </tr>
+    @foreach (var donDat in Model)
+    {
+        <tr class="text-center">
+            <td>@donDat.DonDat.MaDon</td>
+            <td>@donDat.DonDat.NgayDat</td>
+            <td>@donDat.DonDat.SoKhach</td>
+            <td>@donDat.khachHang.HoTen</td>
+            <td>@donDat.DichVu.TenDV</td>
+            <td>
+                <img src="/Asset/images/@donDat.DichVu.Anh" class="thumbnail-image" style=" width: 60px; height: 60px;" />
+            </td>
+            <td>@donDat.DichVu.Gia</td>
+            <td>@donDat.HoaDon.TinhTrangHD</td>
+            <!-- Thêm các cột khác tùy theo yêu cầu của bạn -->
+        </tr>
+    }
+</table>

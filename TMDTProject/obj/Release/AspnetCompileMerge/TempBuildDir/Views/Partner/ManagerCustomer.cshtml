@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TMDTProject.Models.KhachHang> 
+
+@{
+    Layout = "~/Views/SharedAdmin/PartnerSharedLayout.cshtml";
+    ViewBag.Title = "Manager Customer";
+}
+
+<h2>Quản Lý Khách Hàng</h2>
+
+<table class="table">
+    <tr class="text-center">
+        <th>Họ Tên</th>
+        <th>Loại KH</th>
+        <th>Ảnh</th>
+        <th>Giới Tính</th>
+        <th>Ngày Sinh</th>
+        <th>Địa Chỉ</th>
+
+    </tr>
+    @foreach (var khachHang in Model)
+    {
+        <tr class="text-center">
+            <td>@khachHang.HoTen</td>
+            <td>@khachHang.LoaiKhachHang.TenLoaiKH</td>
+            <td>
+                <img src="/Asset/images/@khachHang.AnhDaiDien" class="thumbnail-image" style=" width: 60px; height: 60px;" />
+            </td>
+            <td>@khachHang.GioiTinh</td>
+            <td>@khachHang.NgaySinh</td>
+            <td>@khachHang.DiaChi</td>
+
+        </tr>
+    }
+</table>

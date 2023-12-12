@@ -1,0 +1,53 @@
+﻿@model TMDTProject.Models.HoaDon
+
+@{
+    Layout = "~/Views/SharedAdmin/CustomerSharedLayout.cshtml";
+    ViewBag.Title = "View Order";
+    var khachHang = ViewBag.KhachHang as TMDTProject.Models.KhachHang; // Lấy thông tin khách hàng từ ViewBag
+}
+
+<h2>Thông Tin Chi Tiết Hoá Đơn</h2>
+
+<div>
+    <h4>Hoá Đơn Số:  @Html.DisplayFor(model => model.MaHD)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ngày Đặt Dịch Vụ: @Html.DisplayFor(model => model.Ngay)
+        </dt>
+        <dt>
+            Mã Khách Hàng: @Html.DisplayFor(model => model.MaKH)
+        </dt>
+        <dd>
+            @if (khachHang != null)
+            {
+                if (khachHang.GioiTinh == "Nam")
+                {
+                    <span>Ông: @Html.DisplayFor(x => khachHang.HoTen) </span>
+                }
+                else if (khachHang.GioiTinh == "Nữ")
+                {
+                    <span>Bà:  @Html.DisplayFor(x => khachHang.HoTen)</span>
+                }
+            <dt>
+                Địa Chỉ: @Html.DisplayFor(x => khachHang.DiaChi)
+            </dt>
+            <!-- Thêm các trường thông tin khác của khách hàng tương tự ở đây -->
+        }
+            </dd>
+            <dt>
+                Giá Dịch Vụ: @Html.DisplayFor(model => model.GiaDV)
+            </dt>
+            <dt>
+                Giá Phụ Thu: @Html.DisplayFor(model => model.GiaPhuThu)
+            </dt>
+            <dt>
+                Giá Hoa Hồng: @Html.DisplayFor(model => model.GiaHoaHong)
+            </dt>
+            <dt>
+                Tổng Tiền: @Html.DisplayFor(model => model.TongTien)
+            </dt>
+            <!-- Thêm các trường thông tin khác của hoá đơn tương tự ở đây -->
+        </dl>
+    </div>
+    <a href="~/Customer/PayOrder/@Model.MaDon" class="btn btn-primary">Thanh Toán</a>

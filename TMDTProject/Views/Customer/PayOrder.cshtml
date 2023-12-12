@@ -1,0 +1,44 @@
+﻿@model TMDTProject.Models.HoaDon
+@{
+    Layout = "~/Views/SharedAdmin/CustomerSharedLayout.cshtml";
+    ViewBag.Title = "Thanh Toán";
+}
+
+<h2>Thông Tin Đơn Hàng</h2>
+<div>
+    <p>Tên Khách Hàng: @ViewBag.KhachHang.HoTen</p>
+    <p>Địa Chỉ: @ViewBag.KhachHang.DiaChi</p>
+    <p>Số Điện Thoại: @ViewBag.KhachHang.SDT</p>
+    <!-- Hiển thị thông tin đơn hàng -->
+    <p>Tổng Tiền: @Model.TongTien</p>
+</div>
+
+<h2>Áp Dụng Voucher</h2>
+<form id="voucherForm">
+    <input type="text" id="voucherCode" placeholder="Nhập mã voucher">
+    <button type="button" class="btn btn-primary" onclick="applyVoucher()">Áp Dụng</button>
+    <p id="voucherMessage"></p>
+</form>
+
+<script>
+    function applyVoucher() {
+        var voucherCode = document.getElementById("voucherCode").value;
+        // Gửi mã voucher và mã đơn hàng lên server để kiểm tra và áp dụng
+        $.post("@Url.Action("CheckVoucher", "Customer")", { voucherCode: voucherCode, orderId: @Model.MaHD }, function (data) {
+            if (data.success) {
+                // Cập nhật tổng tiền mới sau khi áp dụng voucher
+                $("#voucherMessage").text("Áp dụng voucher thành công. Tổng tiền mới: " + data.newTotal);
+            } else {
+                $("#voucherMessage").text(data.message);
+            }
+        });
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<h2>Thanh Toán</h2>
+<!-- Hiển thị thông tin thanh toán và nút xác nhận thanh toán -->
+<form id="paymentForm" method="post" action="@Url.Action("PayOrderConfirmed", "Customer", new { id = Model.MaHD })">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Xác Nhận Thanh Toán</button>
+</form>

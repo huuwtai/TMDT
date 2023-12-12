@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2335a06d42f1441d836331e2de8bd154" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="TMDT_DBModel.BinhLuan" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.DanhMuc" Width="1.5" PointX="10.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.DichVu" Width="1.5" PointX="10.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.DoiTac" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.DonDat" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.HoaDon" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.KhachHang" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.LoaiDichVu" Width="1.5" PointX="6" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.LoaiDoiTac" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.LoaiKhachHang" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.PhanQuyen" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.TaiKhoan" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.TinhTrang" Width="1.5" PointX="8.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.TinTuc" Width="1.5" PointX="12.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_DBModel.voucher" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="TMDT_DBModel.FK__BinhLuan__MaNguo__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__TinTuc__MaDanhMu__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__DichVu__LoaiDV__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__DichVu__MaDT__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__DichVu__MaTT__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__DoiTac__MaLoaiDT__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__DoiTac__MaLoaiDV__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__TinTuc__MaDoiTac__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK_MaTK" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__DonDat__MaKH__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__HoaDon__MaDon__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__HoaDon__MaKH__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__KhachHang__MaLoa__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__KhachHang__MaTK__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__TinTuc__MaKhachH__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__TaiKhoan__MaPQ__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_DBModel.FK__TinTuc__TacGia__3F466844" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TMDT_DBModel.YeuThich" Width="1.5" PointX="12.75" PointY="7.75" />
+        <AssociationConnector Association="TMDT_DBModel.FK__YeuThich__MaDV__5629CD9C" />
+        <AssociationConnector Association="TMDT_DBModel.FK__YeuThich__MaKH__5535A963" />
+        <EntityTypeShape EntityType="TMDT_DBModel.ChiTietHoaDon" Width="1.5" PointX="14.75" PointY="4.5" />
+        <AssociationConnector Association="TMDT_DBModel.FK__ChiTietHo__MaDon__5CD6CB2B" />
+        <AssociationConnector Association="TMDT_DBModel.FK__ChiTietHoa__MaDV__5DCAEF64" />
+        <AssociationConnector Association="TMDT_DBModel.FK__BinhLuan__MaDV__5EBF139D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

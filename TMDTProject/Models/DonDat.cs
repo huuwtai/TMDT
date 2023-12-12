@@ -17,10 +17,6 @@ namespace TMDTProject.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DonDat()
         {
-            this.ChiTietChoThueXes = new HashSet<ChiTietChoThueXe>();
-            this.ChiTietPhongKhachSans = new HashSet<ChiTietPhongKhachSan>();
-            this.ChiTietVeMayBays = new HashSet<ChiTietVeMayBay>();
-            this.ChiTietVeXeKhaches = new HashSet<ChiTietVeXeKhach>();
             this.HoaDons = new HashSet<HoaDon>();
         }
     
@@ -29,14 +25,6 @@ namespace TMDTProject.Models
         public Nullable<System.DateTime> NgayDat { get; set; }
         public Nullable<int> SoKhach { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietChoThueXe> ChiTietChoThueXes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietPhongKhachSan> ChiTietPhongKhachSans { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietVeMayBay> ChiTietVeMayBays { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietVeXeKhach> ChiTietVeXeKhaches { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }

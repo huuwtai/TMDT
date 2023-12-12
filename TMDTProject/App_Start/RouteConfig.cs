@@ -16,8 +16,14 @@ namespace TMDTProject
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Customer", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "ManagerServices",
+                url: "managerservice/{action}/{id}",
+                defaults: new { controller = "Partner", action = "ManagerServices", id = UrlParameter.Optional }
+            );
+
         }
     }
 }

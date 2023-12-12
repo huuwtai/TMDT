@@ -149,114 +149,77 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BinhLuan.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BinhLuanPhong.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BinhLuanThueXe.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BinhLuanTourDuLich.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BinhLuanVeMayBay.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BinhLuanVeXeKhach.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietChoThueXe.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietPhongKhachSan.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietVeMayBay.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietVeXeKhach.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+    <Compile Include="Models\ChiTietHoaDon.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DanhMuc.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DichVu.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DoiTac.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DonDat.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhachHang.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\KhachSan.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiDichVu.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiDoiTac.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiKhachHang.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoaiPhong.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+    <Compile Include="Models\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\PhanQuyen.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Phong.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TaiKhoan.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThueXe.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TinhTrang.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TinTuc.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TMDTModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TMDTModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TMDTModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TMDTModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TMDTModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TourDuLich.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VeMayBay.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VeXeKhach.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\ViewModels\CommentViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookServicesViewModel.cs" />
     <Compile Include="Models\voucher.cs">
-      <DependentUpon>TMDTModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Functions\HamDoiTac.cs" />
+    <Compile Include="Models\YeuThich.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\images\bamboo-airways-logo.jpg" />
     <Content Include="Asset\images\banner1.jpg" />
     <Content Include="Asset\images\banner2.jpg" />
     <Content Include="Asset\images\banner3.jpg" />
@@ -269,6 +232,8 @@
     <Content Include="Asset\images\date.png" />
     <Content Include="Asset\images\dots.png" />
     <Content Include="Asset\images\down.png" />
+    <Content Include="Asset\images\futabus-logo.png" />
+    <Content Include="Asset\images\logo-vietravel.png" />
     <Content Include="Asset\images\paris.jpg" />
     <Content Include="Asset\images\g10.jpg" />
     <Content Include="Asset\images\bankok.jpg" />
@@ -284,6 +249,10 @@
     <Content Include="Asset\images\team2.jpg" />
     <Content Include="Asset\images\team3.jpg" />
     <Content Include="Asset\images\team4.jpg" />
+    <Content Include="Asset\images\thanh-buoi-logo.jpg" />
+    <Content Include="Asset\images\vietjet-airlines-logo.jpg" />
+    <Content Include="Asset\images\vietnam-airline-logo.jpg" />
+    <Content Include="Asset\images\Vietnam-tourist-logo.png" />
     <Content Include="Asset\img\undraw_posting_photo.svg" />
     <Content Include="Asset\img\undraw_profile.svg" />
     <Content Include="Asset\img\undraw_profile_1.svg" />
@@ -328,15 +297,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\TMDTModel.Context.tt">
+    <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TMDTModel.edmx</DependentUpon>
-      <LastGenOutput>TMDTModel.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\TMDTModel.tt">
+    <Content Include="Models\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TMDTModel.edmx</DependentUpon>
-      <LastGenOutput>TMDTModel.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
@@ -372,13 +341,16 @@
     <Content Include="Content\bootstrap-datepicker3.css.map" />
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
-    <EntityDeploy Include="Models\TMDTModel.edmx">
+    <EntityDeploy Include="Models\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TMDTModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\TMDTModel.edmx.diagram">
-      <DependentUpon>TMDTModel.edmx</DependentUpon>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\huutai107-001-site1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\huutai107-001-site1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\index_layout\all.js" />
     <Content Include="Scripts\index_layout\app.js" />
@@ -453,22 +425,46 @@
     <Content Include="Views\Customer\Login.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Shared\_IndexLayout.cshtml" />
-    <Content Include="Views\Customer\BookTour.cshtml" />
-    <Content Include="Views\Partner\Create.cshtml" />
-    <Content Include="Views\Partner\Delete.cshtml" />
-    <Content Include="Views\Partner\Details.cshtml" />
+    <Content Include="Views\Customer\BookServices.cshtml" />
     <Content Include="Views\Partner\Edit.cshtml" />
-    <Content Include="Views\Partner\Index.cshtml" />
     <Content Include="Views\Customer\ViewInformation.cshtml" />
     <Content Include="Views\Customer\ViewOrderList.cshtml" />
+    <Content Include="Views\Customer\ViewHistory.cshtml" />
+    <Content Include="Views\Customer\CancelBook.cshtml" />
+    <Content Include="Views\Customer\EditProfile.cshtml" />
+    <Content Include="Views\Customer\ViewOrder.cshtml" />
+    <Content Include="Views\Customer\PayOrder.cshtml" />
+    <Content Include="Views\Customer\CheckVoucher.cshtml" />
+    <Content Include="Views\Customer\FavoriteList.cshtml" />
+    <Content Include="Views\Customer\FilteredServices.cshtml" />
+    <Content Include="Views\Home\FilteredServices.cshtml" />
+    <Content Include="Views\Home\ViewService.cshtml" />
+    <Content Include="Views\Customer\ViewService.cshtml" />
+    <Content Include="Views\SharedAdmin\CustomerSharedLayout.cshtml" />
+    <Content Include="Views\Partner\ManagerServices.cshtml" />
+    <Content Include="Views\Partner\ManagerCustomer.cshtml" />
+    <Content Include="Views\SharedAdmin\PartnerSharedLayout.cshtml" />
+    <Content Include="Views\Partner\ManagerComment.cshtml" />
+    <Content Include="Views\Partner\Register.cshtml" />
+    <Content Include="Views\Partner\ManagerBookServices.cshtml" />
+    <Content Include="Views\Partner\ManagerRevenue.cshtml" />
+    <Content Include="Views\Partner\CreateServices.cshtml" />
+    <Content Include="Views\Partner\EditService.cshtml" />
+    <Content Include="Views\Partner\DetailsService.cshtml" />
+    <Content Include="Views\Partner\ManagerVoucher.cshtml" />
+    <Content Include="Views\Partner\CreateVoucher.cshtml" />
+    <Content Include="Views\Partner\EditVoucher.cshtml" />
+    <Content Include="Views\Partner\Index.cshtml" />
+    <Content Include="Views\Partner\ViewInformation.cshtml" />
+    <Content Include="Views\Partner\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\QuanLyBinhLuan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Asset\DataTables\" />
     <Folder Include="Content\Logo_Images\" />
     <Folder Include="Models\Data\" />
-    <Folder Include="Models\ViewModels\" />
-    <Folder Include="Views\DoiTac\" />
+    <Folder Include="Models\Functions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

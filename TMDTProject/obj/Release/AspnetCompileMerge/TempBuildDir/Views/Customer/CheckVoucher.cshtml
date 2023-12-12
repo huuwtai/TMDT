@@ -1,0 +1,34 @@
+﻿<!-- Trang web hoặc phần tử trên trang web để nhập mã voucher và orderId -->
+<input type="text" id="voucherCode" placeholder="Nhập mã voucher">
+<input type="text" id="orderId" placeholder="Nhập orderId">
+<button onclick="checkVoucher()">Kiểm tra voucher</button>
+
+<!-- Kết quả trả về từ action "CheckVoucher" -->
+<div id="result"></div>
+
+<script>
+    function checkVoucher() {
+        var voucherCode = document.getElementById('voucherCode').value;
+        var orderId = document.getElementById('orderId').value;
+
+        // Gửi yêu cầu kiểm tra voucher đến action "CheckVoucher" trong controller "Customer"
+        $.ajax({
+            url: '/Customer/CheckVoucher',
+            type: 'POST',
+            data: { voucherCode: voucherCode, orderId: orderId },
+            success: function (response) {
+                if (response.success) {
+                    // Hiển thị tổng tiền mới sau khi áp dụng voucher
+                    document.getElementById('result').innerText = 'Áp dụng mã voucher thành công. Tổng tiền mới: ' + response.newTotal;
+                } else {
+                    // Hiển thị thông báo lỗi nếu voucher không hợp lệ
+                    document.getElementById('result').innerText = response.message;
+                }
+            },
+            error: function () {
+                // Xử lý khi có lỗi xảy ra trong quá trình gửi yêu cầu kiểm tra voucher
+                document.getElementById('result').innerText = 'Đã xảy ra lỗi khi kiểm tra voucher.';
+            }
+        });
+    }
+</script>

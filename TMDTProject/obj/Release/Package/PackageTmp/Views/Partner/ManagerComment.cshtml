@@ -1,0 +1,25 @@
+﻿@model IEnumerable<TMDTProject.Models.ViewModels.CommentViewModel>
+@{
+    Layout = "~/Views/SharedAdmin/PartnerSharedLayout.cshtml";
+    ViewBag.Title = "Quản lý bình luận của khách";
+}
+
+<h2>Quản Lý Bình Luận</h2>
+
+<div class="card-container">
+    @for (var i = 0; i < Model.Count(); i++)
+    {
+        if (i % 3 == 0)
+        {
+        @:</div><div class="row">
+        }
+        <div class="col-md-4">
+            <div class="card p-4">
+                <h3>Mã Bình Luận: @Model.ElementAt(i).MaBinhLuan</h3>
+                <p>Mã Người Dùng: @Model.ElementAt(i).MaNguoiDung</p>
+                <p>Nội Dung: @Model.ElementAt(i).NoiDung</p>
+                <p>Thời Gian: @Model.ElementAt(i).ThoiGian</p>
+            </div>
+        </div>
+    }
+</div>
